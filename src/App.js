@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainPage from './page/mainPage';
+import SigninPage from './page/signinPage';
+import AdminDashboard from './page/admin/adminDashboardPage';
+import EmployeeDashboard from './page/employee/employeeDashboard';
+import AdminAttendance from './page/admin/Adminattendence';
+import EmployeeAttendance from './page/employee/EmployeeAttendance';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Main Routes */}
+        <Route path="/" element={< MainPage/>} />
+        <Route path="/login" element={<SigninPage/>} />
+
+        {/* Admin-Side Routes */}
+        <Route path="/admin-Dashboard" element={<AdminDashboard/>} />
+        <Route path="/attendance" element={<AdminAttendance />} />
+
+        {/* Employee-Side Routes */}
+        <Route path="/employee-dashboard" element={<EmployeeDashboard/>}/>
+        <Route path='/employee-attendance' element={<EmployeeAttendance />} />
+
+      </Routes>
+    </Router>
   );
 }
 

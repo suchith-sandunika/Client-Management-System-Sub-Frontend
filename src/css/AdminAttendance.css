@@ -1,0 +1,208 @@
+/* Main Container */
+.admin-attendance-container {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 50px; /* Push content below the navbar */
+  display: flex;
+  flex-direction: column; /* Space between elements inside the main content */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #24757E;
+  text-align: center;
+}
+
+/* Controls Section */
+.controls-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  gap: 10px;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #ffffff;
+  border: 1px solid #24757E;
+  color: #24757E;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 50px; /* Rounded corners */
+  cursor: pointer;
+  min-width: 120px; /* Ensure consistent button size */
+}
+
+.control-btn:hover {
+  background-color: #24757E;
+  color: #ffffff;
+}
+
+.search-bar-container {
+  position: relative;
+  max-width: 300px; /* Optional: Adjust width */
+}
+
+.search-bar {
+  width: 180px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 50px; /* Rounded corners */
+  padding-right: 40px; /* Space for the icon */
+}
+
+.search-bar-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.reset-btn {
+  background-color: #24757E;
+  border: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.download-btn {
+  background-color: #24757E;
+  border: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+} 
+
+.reset-btn:hover {
+  background-color: #45919A;
+  color: #ffffff;
+}
+
+.download-btn:hover {
+  background-color: #45919A;
+  color: #ffffff;
+}
+
+/* Card Styling */
+.card.shadow-sm {
+  height: 100%; /* Allow the card to take full height of the available space */
+  padding: 15px; /* Ensure consistent inner spacing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between content */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  border: none; /* Hides the table border */
+}
+
+/* Card Body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 340px); /* Adjust height relative to viewport */
+  overflow: hidden; /* Prevent content overflow */
+  padding: 2px;
+}
+
+.card-body > *:not(:last-child) {
+  margin-bottom: 15px; /* Space between sections inside the card */
+}
+
+/* Table Container */
+.table-container {
+  background-color: #ffffff; /* White background for the box */
+  border: 1px solid #ddd; /* Border around the box */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visual effect */
+  margin-top: 10px;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+/* Scrollable Table */
+.scrollable-table {
+  flex-grow: 1; /* Allow the table container to expand within the card */
+  height: calc(100vh - 350px); /* Adjust height dynamically based on page content */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
+  margin-top: 10px; /* Space above the table */
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+/* Table Styles */
+.attendance-table {
+  width: 100%; /* Ensure table spans full width */
+  border-collapse: collapse; /* Collapse table borders for a clean look */
+}
+
+.attendance-table th,
+.attendance-table td {
+  text-align: center; /* Center align text */
+  padding: 12px; /* Add padding for cells */
+  border: 1px solid #ddd; /* Border around table cells */
+}
+
+.attendance-table th {
+  background-color: #f8f9fa; /* Light gray background for headers */
+  color: #000000; /* Black text for headers */
+  font-weight: bold; /* Bold header text */
+}
+
+.attendance-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Date Picker Container */
+.date-picker-container {
+  z-index: 1050; /* Ensures date picker appears above other elements */
+  top: 100%; /* Aligns right below the button */
+  left: 0;
+  position: absolute;
+  background-color: #ffffff; /* White background for the picker */
+  border: 1px solid #ddd; /* Border around the picker */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  padding: 10px; /* Padding inside the picker container */
+}
+
+/* Icons in Buttons */
+.control-btn i {
+  font-size: 1rem; /* Adjust calendar icon size */
+  vertical-align: middle;
+}
+
+.search-bar-icon-btn i {
+  font-size: 1.2rem; /* Adjust search icon size */
+  vertical-align: middle;
+}

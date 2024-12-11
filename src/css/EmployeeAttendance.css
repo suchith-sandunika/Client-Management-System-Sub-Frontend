@@ -1,0 +1,129 @@
+.admin-attendance-container {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+} 
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-top: 50px; /* Push content below the navbar */
+    display: flex;
+    flex-direction: column; /* Space between elements inside the main content */
+} 
+
+.page-name-container {
+    font-size: 14px;
+    color: #6c757d;
+} 
+
+.page-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #24757E;
+    text-align: center;
+} 
+
+.main-container {
+    height: 100%; /* Allow the card to take full height of the available space */
+    padding: 15px; /* Ensure consistent inner spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between content */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}  
+
+.search-bar-container {
+    position: relative;
+    max-width: 300px; /* Optional: Adjust width */
+}
+  
+.search-bar {
+    width: 180px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 50px; /* Rounded corners */
+    padding-right: 40px; /* Space for the icon */
+}
+  
+.search-bar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.add-button {
+    background-color: #24757E;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between text and icon */
+    cursor: pointer;
+}  
+
+.add-button:hover {
+    background-color: #45919A;
+}
+
+.button-icon {
+    width: 25px;
+    height: 25px; /* Adjust size as needed */
+}  
+
+.table-container {
+    flex-grow: 1; /* Allow the table container to expand within the card */
+    height: calc(100vh - 350px); /* Adjust height dynamically based on page content */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
+    margin-top: 10px; /* Space above the table */
+    background-color: #ffffff;
+    border-radius: 10px;
+} 
+
+.employee-attendance-table {
+    width: 100%; /* Ensure table spans full width */
+    border-collapse: collapse; /* Collapse table borders for a clean look */
+    text-align: center;
+} 
+
+.employee-attendance-table th,
+.employee-attendance-table td {
+  text-align: center; /* Center align text */
+  padding: 12px; /* Add padding for cells */
+  border: 1px solid #ddd; /* Border around table cells */
+}
+
+.employee-attendance-table th {
+  background-color: #f8f9fa; /* Light gray background for headers */
+  color: #000000; /* Black text for headers */
+  font-weight: bold; /* Bold header text */
+} 
+
+.attendance-table tbody {
+    display: block;
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.attendance-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #f1f1f1; /* Highlight row on hover */
+}
