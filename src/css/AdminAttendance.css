@@ -63,7 +63,7 @@
 }
 
 .search-bar {
-  width: 180px;
+  width: 250px;
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 50px; /* Rounded corners */
@@ -98,34 +98,23 @@
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
-} 
-
-.reset-btn:hover {
-  background-color: #45919A;
-  color: #ffffff;
-}
-
-.download-btn:hover {
-  background-color: #45919A;
-  color: #ffffff;
 }
 
 /* Card Styling */
 .card.shadow-sm {
   height: 100%; /* Allow the card to take full height of the available space */
-  padding: 15px; /* Ensure consistent inner spacing */
+  padding: 20px; /* Ensure consistent inner spacing */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between content */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  border: none; /* Hides the table border */
 }
 
 /* Card Body */
 .card-body {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 340px); /* Adjust height relative to viewport */
+  height: calc(100vh - 350px); /* Adjust height relative to viewport */
   overflow: hidden; /* Prevent content overflow */
   padding: 2px;
 }
@@ -153,7 +142,6 @@
   border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
   margin-top: 10px; /* Space above the table */
   background-color: #ffffff;
-  border-radius: 10px;
 }
 
 /* Table Styles */
@@ -206,3 +194,13 @@
   font-size: 1.2rem; /* Adjust search icon size */
   vertical-align: middle;
 }
+
+.w-15 {
+  width: 15%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+

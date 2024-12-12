@@ -1,58 +1,75 @@
-.admin-attendance-container {
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-} 
+.sidebar-container {
+    width: 250px; /* Default width for larger screens */
+    background-color: #f8f9fa;
+    flex-shrink: 0; /* Optional: Sidebar background color */
+}
 
-.main-content {
-    flex-grow: 1;
+@media (max-width: 768px) {
+    .sidebar-container {
+        width: 100%; /* Full width on smaller screens */
+        position: fixed; /* Optional: Fix it to the side */
+        z-index: 1000; /* Place it above other content */
+    }
+}
+
+.content-container {
     padding: 20px;
-    margin-top: 50px; /* Push content below the navbar */
-    display: flex;
-    flex-direction: column; /* Space between elements inside the main content */
-} 
+    flex-grow: 1;
+}
 
-.page-name-container {
-    font-size: 14px;
-    color: #6c757d;
-} 
+@media (max-width: 768px) {
+    .content-container {
+        margin-top: 60px; /* Adjust for fixed navbar or sidebar */
+    }
+}
 
-.page-title {
+.card-container-height {
+    min-height: 430px;
+}
+
+@media (max-width: 768px) {
+    .card-container-height {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+}
+
+.employee-attendance-page-title {
     font-size: 22px;
     font-weight: bold;
     color: #24757E;
     text-align: center;
-} 
+}
 
-.main-container {
-    height: 100%; /* Allow the card to take full height of the available space */
-    padding: 15px; /* Ensure consistent inner spacing */
+.employee-main-container {
+    height: 100%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space between content */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border: none;
 }
 
-.button-container {
+.employee-button-container {
+    margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-}  
+    gap: 10px; /* Add spacing for buttons on smaller screens */
+}
 
-.search-bar-container {
+.employee-search-bar-container {
     position: relative;
-    max-width: 300px; /* Optional: Adjust width */
+    max-width: 300px;
+    width: 100%;
 }
-  
-.search-bar {
-    width: 180px;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 50px; /* Rounded corners */
-    padding-right: 40px; /* Space for the icon */
+
+.employee-search-bar {
+    border-radius: 50px;
+    width: 100%; /* Full width for smaller screens */
 }
-  
-.search-bar-icon {
+
+.employee-search-bar-icon {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -62,68 +79,74 @@
     color: #6c757d;
 }
 
-.add-button {
+.add-attendance-button {
     background-color: #24757E;
     border-radius: 8px;
     color: white;
     border: none;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between text and icon */
+    gap: 8px;
     cursor: pointer;
-}  
+}
 
-.add-button:hover {
+.add-attendance-button:hover {
     background-color: #45919A;
 }
 
-.button-icon {
+.add-attendance-button-icon {
     width: 25px;
-    height: 25px; /* Adjust size as needed */
-}  
+    height: 25px;
+}
 
-.table-container {
-    flex-grow: 1; /* Allow the table container to expand within the card */
-    height: calc(100vh - 350px); /* Adjust height dynamically based on page content */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
-    margin-top: 10px; /* Space above the table */
+@media (max-width: 768px) {
+    .add-attendance-button {
+        width: 100%; /* Full width for mobile screens */
+        justify-content: center;
+    }
+}
+
+.employee-attendance-table-container {
+    flex-grow: 1;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #8c8c8c33;
     background-color: #ffffff;
     border-radius: 10px;
-} 
+    margin: 10px;
+}
 
 .employee-attendance-table {
-    width: 100%; /* Ensure table spans full width */
-    border-collapse: collapse; /* Collapse table borders for a clean look */
-    text-align: center;
-} 
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* Adjust font size for readability */
+}
 
 .employee-attendance-table th,
 .employee-attendance-table td {
-  text-align: center; /* Center align text */
-  padding: 12px; /* Add padding for cells */
-  border: 1px solid #ddd; /* Border around table cells */
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center; /* Center-align text for all cells */
 }
 
 .employee-attendance-table th {
-  background-color: #f8f9fa; /* Light gray background for headers */
-  color: #000000; /* Black text for headers */
-  font-weight: bold; /* Bold header text */
-} 
-
-.attendance-table tbody {
-    display: block;
-    max-height: 300px; /* Adjust height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f8f9fa;
+    color: #000000;
+    font-weight: bold;
 }
 
-.attendance-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray background for even rows */
+.employee-attendance-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.attendance-table tbody tr:hover {
-  background-color: #f1f1f1; /* Highlight row on hover */
+.employee-attendance-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .employee-attendance-table th,
+    .employee-attendance-table td {
+        padding: 8px; /* Reduce padding on smaller screens */
+    }
 }

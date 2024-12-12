@@ -12,6 +12,7 @@
     "client": "file:",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
+    "nodemon": "^3.1.7",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-datepicker": "^7.5.0",
