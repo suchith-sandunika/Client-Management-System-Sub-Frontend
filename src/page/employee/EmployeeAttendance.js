@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer} from 'react-toastify';
 import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
+import AddAttendancePopup from "../../components/AddAttendancePopup";
 import circlePlusIcon from "../../assets/circle-plus.256x256.png";
+import 'react-toastify/dist/ReactToastify.css';
 import "../../css/EmployeeAttendance.css";
 
 function EmployeeAttendance() {
@@ -85,6 +86,11 @@ function EmployeeAttendance() {
 
     const addAttendance = () => {
         setOpenPopup(true);
+        console.log('Opening the Popup --');
+    };
+
+    const closePopup = () => {
+        setOpenPopup(false);
     };
 
     useEffect(() => {
@@ -166,6 +172,14 @@ function EmployeeAttendance() {
                 </div>
             </div>
             <Footer />
+            {openPopup && (
+                <div className="popup-overlay">
+                    <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                        <AddAttendancePopup closePopup={closePopup}/>
+                    </div>
+                </div>
+            )}
+            <ToastContainer />
         </div>
     );
 }

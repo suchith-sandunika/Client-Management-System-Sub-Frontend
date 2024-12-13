@@ -1,0 +1,27 @@
+label {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+input {
+    margin-right: 5px;
+    border-radius: 8px;
+    height: 35px;
+}
+
+input::placeholder {
+    color: gray; /* Set the placeholder color */
+    opacity: 1; /* Ensures the color is not translucent */
+}
+
+p {
+    font-size: 11px;
+}
+
+button {
+    background-color: #1c2d4d;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);;
+}
