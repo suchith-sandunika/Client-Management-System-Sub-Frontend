@@ -120,7 +120,7 @@ const AdminAttendance = () => {
             </h5>
           </div>
 
-          <div className="card shadow-sm">
+          <div className="">
             <div className="card-body">
               <h4 className="page-title text-center">Attendance</h4>
 
