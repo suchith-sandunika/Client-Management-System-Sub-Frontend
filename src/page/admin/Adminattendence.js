@@ -5,7 +5,6 @@ import Sidebar from '../../components/templetes/SideBar';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/AdminAttendance.css';
-import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 const AdminAttendance = () => {
@@ -108,11 +107,14 @@ const AdminAttendance = () => {
   };
 
   return (
-      <div className="admin-attendance-container">
-        <Navbar />
-        <div className="d-flex">
-          <Sidebar sidebarVisible={sidebarVisible} />
-          <div className="main-content p-4">
+    <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+      <Navbar />
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
+      <div className={`flex-grow-1 d-flex ${sidebarVisible ? 'show-sidebar' : ''}`}>
+        <Sidebar sidebarVisible={sidebarVisible} />
+        <div className="main-content p-4">
             <div className="breadcrumb mb-3">
               <h5>
                 Home /{' '}
@@ -120,7 +122,7 @@ const AdminAttendance = () => {
               </h5>
             </div>
 
-            <div className="card shadow-sm">
+            <div className="card shadow-sm border-0">
               <div className="card-body">
                 <h4 className="page-title text-center">Attendance</h4>
 
@@ -155,7 +157,7 @@ const AdminAttendance = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn search-bar-icon-btn">
+                    <button className="btn search-bar-icon">
                       <i className="bi bi-search"></i>
                     </button>
                   </div>
@@ -196,7 +198,7 @@ const AdminAttendance = () => {
                     ))}
                     {filteredData.length === 0 && (
                         <tr className='w-100 text-center'>
-                          <td>
+                          <td className='w-100 border-0' colSpan="5">
                             No matching records found
                           </td>
                         </tr>
@@ -206,10 +208,10 @@ const AdminAttendance = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <Footer />
+        </div> 
       </div>
+      <Footer />              
+    </div>
   );
 };
 

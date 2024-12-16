@@ -6,9 +6,11 @@
 
 @media (max-width: 768px) {
     .sidebar-container {
-        width: 100%; /* Full width on smaller screens */
-        position: fixed; /* Optional: Fix it to the side */
-        z-index: 1000; /* Place it above other content */
+        width: 100%; /* Full width for mobile screens */
+        position: fixed; /* Fixed sidebar for smaller screens */
+        z-index: 1000;
+        top: 0;
+        left: 0; /* Place it above other content */
     }
 }
 
@@ -19,7 +21,8 @@
 
 @media (max-width: 768px) {
     .content-container {
-        margin-top: 60px; /* Adjust for fixed navbar or sidebar */
+        margin-top: 60px; /* Adjust for fixed navbar/sidebar */
+        padding: 10px; /* Reduced padding for smaller screens */
     }
 }
 
@@ -38,6 +41,12 @@
     font-weight: bold;
     color: #24757E;
     text-align: center;
+} 
+
+@media (max-width: 768px) {
+    .employee-attendance-page-title {
+        font-size: 18px; /* Slightly smaller on smaller screens */
+    }
 }
 
 .employee-main-container {
@@ -53,9 +62,15 @@
 .employee-button-container {
     margin-top: 20px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: space-between;
-    gap: 10px; /* Add spacing for buttons on smaller screens */
+    gap: 10px; /* Add spacing between buttons */
+} 
+
+@media (max-width: 768px) {
+    .employee-button-container {
+        flex-direction: column; /* Stack buttons vertically */
+    }
 }
 
 .employee-search-bar-container {
@@ -117,7 +132,6 @@
     flex-grow: 1;
     max-height: 400px;
     overflow-y: auto;
-    border: 1px solid #8c8c8c33;
     background-color: #ffffff;
     border-radius: 10px;
     margin: 10px;
@@ -127,6 +141,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 14px; /* Adjust font size for readability */
+    border: 1px solid #8c8c8c33;
 }
 
 .employee-attendance-table th,
@@ -167,7 +182,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 1000;
 }
 
 .popup-content {
@@ -179,4 +194,11 @@
     max-width: 90%;
     text-align: center;
     z-index: 1001; /* Ensure it appears above the overlay */
+} 
+
+@media (max-width: 768px) {
+    .popup-content {
+        width: 90%; /* Adjust popup width for mobile */
+        padding: 15px; /* Reduce padding */
+    }
 }

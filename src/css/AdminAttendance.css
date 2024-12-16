@@ -60,10 +60,12 @@
 .search-bar-container {
   position: relative;
   max-width: 300px; /* Optional: Adjust width */
+  margin-top: 5px;
+  margin-right: 20px;
 }
 
 .search-bar {
-  width: 250px;
+  width: 200px;
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 50px; /* Rounded corners */
@@ -72,12 +74,15 @@
 
 .search-bar-icon {
   position: absolute;
-  right: 10px;
+  margin-left: 200px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
   font-size: 18px;
   color: #6c757d;
+  border: none;
+  box-shadow: none !important;
+  
 }
 
 .reset-btn {
@@ -101,9 +106,9 @@
 }
 
 /* Card Styling */
-.card.shadow-sm {
+.shadow-sm {
   height: 100%; /* Allow the card to take full height of the available space */
-  padding: 20px; /* Ensure consistent inner spacing */
+  padding: 5px; /* Ensure consistent inner spacing */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between content */
@@ -135,19 +140,18 @@
 
 /* Scrollable Table */
 .scrollable-table {
-  flex-grow: 1; /* Allow the table container to expand within the card */
-  height: calc(100vh - 350px); /* Adjust height dynamically based on page content */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
-  margin-top: 10px; /* Space above the table */
-  background-color: #ffffff;
+  margin-top: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 4px; /* Optional: adds rounded corners */
+  box-sizing: border-box; /* Ensures padding and borders are included in width/height calculations */
 }
 
 /* Table Styles */
 .attendance-table {
   width: 100%; /* Ensure table spans full width */
   border-collapse: collapse; /* Collapse table borders for a clean look */
+  border: 1px solid rgba(140, 140, 140, 0.2);
 }
 
 .attendance-table th,
