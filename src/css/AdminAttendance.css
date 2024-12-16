@@ -80,25 +80,24 @@
   color: #6c757d;
 }
 
+.reset-btn, .download-btn {
+  width: 150px; /* Ensure both buttons have the same width */
+  padding: 10px 20px; /* Adjust padding as needed */
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px; /* Optional for rounded edges */
+}
+
 .reset-btn {
-  background-color: #24757E;
-  border: none;
-  color: #ffffff;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: #24757E; /* Light red for Reset button */
+  color: white; /* Darker red for text */
 }
 
 .download-btn {
-  background-color: #24757E;
-  border: none;
-  color: #ffffff;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: #24757E; /* Light green for Download button */
+  color: white; /* Darker green for text */
 }
+
 
 /* Card Styling */
 .card.shadow-sm {
