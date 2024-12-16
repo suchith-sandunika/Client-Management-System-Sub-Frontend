@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/templetes/Navbar';
 import Footer from '../../components/PagesFooter';
 import Sidebar from '../../components/templetes/SideBar';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import '../../css/AdminAttendance.css';
-import 'jspdf-autotable';
+import DatePicker from 'react-datepicker'; 
+import 'react-datepicker/dist/react-datepicker.css'; 
+import '../../css/AdminAttendance.css'; 
+import jsPDF from 'jspdf'; 
+import 'jspdf-autotable'; 
 
 const AdminAttendance = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -21,7 +22,7 @@ const AdminAttendance = () => {
 
   const handleSortDateClick = () => {
     if (showDatePicker) {
-      setSelectedDate(null);
+      setSelectedDate(null); 
     }
     setShowDatePicker(!showDatePicker);
   };
@@ -52,7 +53,7 @@ const AdminAttendance = () => {
     if (!date) return '';
     const d = new Date(date);
     const year = d.getFullYear();
-    const month = ('0' + (d.getMonth() + 1)).slice(-2);
+    const month = ('0' + (d.getMonth() + 1)).slice(-2); 
     const day = ('0' + d.getDate()).slice(-2);
     return `${year}-${month}-${day}`; // Only the date portion
   };
@@ -61,12 +62,12 @@ const AdminAttendance = () => {
   useEffect(() => {
     const filtered = attendanceData.filter((entry) => {
       const searchMatch =
-          entry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          entry.email.toLowerCase().includes(searchTerm.toLowerCase());
+        entry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        entry.email.toLowerCase().includes(searchTerm.toLowerCase());
 
       const dateMatch = selectedDate
-          ? formatDate(entry.date) === formatDate(selectedDate)
-          : true;
+        ? formatDate(entry.date) === formatDate(selectedDate)
+        : true;
 
       return searchMatch && dateMatch;
     });
@@ -107,110 +108,107 @@ const AdminAttendance = () => {
   };
 
   return (
-    <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+    <div className="admin-attendance-container">
       <Navbar />
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-        ☰
-      </button>
-      <div className={`flex-grow-1 d-flex ${sidebarVisible ? 'show-sidebar' : ''}`}>
+      <div className="d-flex">
         <Sidebar sidebarVisible={sidebarVisible} />
         <div className="main-content p-4">
-            <div className="breadcrumb mb-3">
-              <h5>
-                Home /{' '}
-                <span style={{ color: '#24757E' }}>Attendance</span>
-              </h5>
-            </div>
+          <div className="breadcrumb mb-3">
+            <h5>
+              Home /{' '}
+              <span style={{ color: '#24757E' }}>Attendance</span>
+            </h5>
+          </div>
 
-            <div className="card shadow-sm border-0">
-              <div className="card-body">
-                <h4 className="page-title text-center">Attendance</h4>
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h4 className="page-title text-center">Attendance</h4>
 
-                <div className="controls-section d-flex justify-content-between align-items-center my-2">
-                  <div className="d-flex align-items-center position-relative">
-                    <button
-                        className="btn control-btn me-2 d-flex align-items-center justify-content-between mb-1"
-                        onClick={handleSortDateClick}
-                    >
-                      {selectedDate ? selectedDate.toLocaleDateString() : 'Sort Date'}
-                      <i className="bi bi-calendar ms-2"></i>
-                    </button>
-                    {showDatePicker && (
-                        <div className="date-picker-container position-absolute">
-                          <DatePicker
-                              selected={selectedDate}
-                              onChange={handleDateChange}
-                              dateFormat="yyyy/MM/dd"
-                              className="form-control ms-2"
-                              placeholderText="Select a date"
-                              inline
-                          />
-                        </div>
-                    )}
-                  </div>
-
-                  <div className="search-bar-container position-relative d-flex">
-                    <input
-                        type="text"
-                        className="form-control search-bar me-2"
-                        placeholder="Search"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <button className="btn search-bar-icon">
-                      <i className="bi bi-search"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="d-flex gap-2 mb-1">
+              <div className="controls-section d-flex justify-content-between align-items-center my-2">
+                <div className="d-flex align-items-center position-relative">
                   <button
-                      className="btn reset-btn"
-                      onClick={handleReset} // Updated to use handleReset
+                    className="btn control-btn me-2 d-flex align-items-center justify-content-between mb-1"
+                    onClick={handleSortDateClick}
                   >
-                    Reset
+                    {selectedDate ? selectedDate.toLocaleDateString() : 'Sort Date'}
+                    <i className="bi bi-calendar ms-2"></i>
                   </button>
-                  <button className="btn download-btn" onClick={handleDownloadPDF}>
-                    Download
-                  </button>
+                  {showDatePicker && (
+                    <div className="date-picker-container position-absolute">
+                      <DatePicker
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        dateFormat="yyyy/MM/dd"
+                        className="form-control ms-2"
+                        placeholderText="Select a date"
+                        inline
+                      />
+                    </div>
+                  )}
                 </div>
 
-                <div className="scrollable-table">
-                  <table className="attendance-table table table-bordered">
-                    <thead className="thead-light">
-                      <tr className='w-100'>
-                        <th className='w-15'>NO</th>
-                        <th className='w-25'>Employee Name</th>
-                        <th className='w-20'>Date</th>
-                        <th className='w-25'>Email</th>
-                        <th className='w-15'>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {filteredData.map((entry, index) => (
-                        <tr key={entry.name} className='w-100 text-center'>
-                          <td className='w-15'>{entry.RowNumber}</td>
-                          <td className='w-25'>{entry.name}</td>
-                          <td className='w-20'>{formatDate(entry.date)}</td> {/* Display formatted date */}
-                          <td className='w-25'>{entry.email}</td>
-                          <td className='w-15'>{entry.status}</td> {/* Always display "Attended" */}
-                        </tr>
-                    ))}
-                    {filteredData.length === 0 && (
-                        <tr className='w-100 text-center'>
-                          <td className='w-100 border-0' colSpan="5">
-                            No matching records found
-                          </td>
-                        </tr>
-                    )}
-                    </tbody>
-                  </table>
+                <div className="search-bar-container position-relative d-flex">
+                  <input
+                    type="text"
+                    className="form-control search-bar me-2"
+                    placeholder="Search by name or email"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <button className="btn search-bar-icon-btn">
+                    <i className="bi bi-search"></i>
+                  </button>
                 </div>
               </div>
+
+              <div className="d-flex gap-2 mb-1">
+                <button
+                  className="btn reset-btn"
+                  onClick={handleReset} // Updated to use handleReset
+                >
+                  Reset
+                </button>
+                <button className="btn download-btn" onClick={handleDownloadPDF}>
+                  Download
+                </button>
+              </div>
+
+              <div className="scrollable-table">
+                <table className="attendance-table table table-bordered">
+                  <thead className="thead-light">
+                    <tr>
+                      <th>NO</th>
+                      <th>Employee Name</th>
+                      <th>Date</th>
+                      <th>Email</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((entry, index) => (
+                      <tr key={entry.id}>
+                        <td>{index + 1}</td>
+                        <td>{entry.name}</td>
+                        <td>{formatDate(entry.date)}</td> {/* Display formatted date */}
+                        <td>{entry.email}</td>
+                        <td>{entry.status}</td> {/* Always display "Attended" */}
+                      </tr>
+                    ))}
+                    {filteredData.length === 0 && (
+                      <tr>
+                        <td colSpan="5" className="text-center">
+                          No matching records found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </div> 
+          </div>
+        </div>
       </div>
-      <Footer />              
+      <Footer />
     </div>
   );
 };
