@@ -179,7 +179,7 @@ const AdminAttendance = () => {
                   <table className="attendance-table table table-bordered">
                     <thead className="thead-light">
                       <tr className='w-100'>
-                        <th className='w-15'>No.</th>
+                        <th className='w-15'>NO</th>
                         <th className='w-25'>Employee Name</th>
                         <th className='w-20'>Date</th>
                         <th className='w-25'>Email</th>
