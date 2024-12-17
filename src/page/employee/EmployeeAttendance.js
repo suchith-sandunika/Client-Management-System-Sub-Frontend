@@ -165,10 +165,7 @@ function EmployeeAttendance() {
                                                     <td className="text-center">{element.name}</td>
                                                     <td className="text-center">{formatDateToDMY(new Date(element.date))}</td>
                                                     <td className="text-center">{element.email}</td>
-                                                    <td
-                                                        className="text-center text-bold">
-                                                        style={{ color: element.status === "Attended" ? "green" : "red" }}
-                                                    >
+                                                    <td className="text-center text-bold" style={{ color: element.status === "Attended" ? "green" : "red" }}>
                                                         {element.status}
                                                     </td>
                                                 </tr>

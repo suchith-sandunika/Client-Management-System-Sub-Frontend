@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {toast, ToastContainer} from 'react-toastify';
 import '../css/AddAttendancePopup.css';
 
 const AddAttendancePopup = ({ closePopup }) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(''); 
+
+    useEffect(() => {
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+        setDate(today); // Set the current date as default
+    }, []); 
 
     const handleChange = (e) => {
         setDate(e.target.value); // Update state with selected date
-      };
+    };
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -55,7 +61,7 @@ const AddAttendancePopup = ({ closePopup }) => {
             <form className='align-content-center'>
                 <div className='d-flex justify-content-between align-items-start mb-3'>
                     <label htmlFor='name' className='pt-2 w-25 text-start'>User Name</label>
-                    <input type="text" placeholder='Silva' className='w-75' required onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder='User Name' className='w-75' required onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className='d-flex justify-content-between mt-1 align-items-start mb-3'>
                     <label htmlFor='date-input' className='pt-2 w-25 text-start'>Date</label>
@@ -63,7 +69,7 @@ const AddAttendancePopup = ({ closePopup }) => {
                 </div>
                 <div className='d-flex justify-content-between mt-1 align-items-start mb-3'>
                     <label htmlFor='email' className='pt-2 w-25 text-start'>Email</label>
-                    <input type="text" placeholder='silva@gmail.com' className='w-75' required onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="text" placeholder='Email' className='w-75' required onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <p className='text-center'>
                     Attendance recorded! Thank you for visiting our employees today.
