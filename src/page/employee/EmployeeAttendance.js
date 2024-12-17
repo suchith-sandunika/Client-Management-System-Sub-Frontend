@@ -4,7 +4,7 @@ import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
 import AddAttendancePopup from "../../components/AddAttendancePopup";
-import circlePlusIcon from "../../assets/circle-plus.256x256.png";
+import circlePlusIcon from "../../assets/image.png";
 import 'react-toastify/dist/ReactToastify.css';
 import "../../css/EmployeeAttendance.css";
 
@@ -120,8 +120,8 @@ function EmployeeAttendance() {
                     </h5>
                     <div className="card mt-2 card-container-height border-0">
                         <div className="card-body">
-                            <h4 className="employee-attendance-page-title text-center mt-3">Attendance</h4>
-                            <div className="employee-button-container d-flex justify-content-between mt-2">
+                            <h4 className="employee-attendance-page-title text-center mt-1">Attendance</h4>
+                            <div className="employee-button-container d-flex justify-content-between mt-1">
                                 {/* Search Bar */}
                                 <div className="employee-search-bar-container position-relative d-flex ms-2">
                                     <input
@@ -146,27 +146,27 @@ function EmployeeAttendance() {
                                 </button>
                             </div>
                             {/* Table Container */}
-                            <div className="employee-attendance-table-container mt-2">
+                            <div className="employee-attendance-table-container mt-1">
                                 <table className="table table-bordered employee-attendance-table">
                                     <thead className="thead-light">
                                         <tr className="text-center">
-                                            <th>NO</th>
-                                            <th>Employee Name</th>
-                                            <th>Date</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
+                                            <th className="w-20 text-center">No</th>
+                                            <th className="w-20 text-center">Employee Name</th>
+                                            <th className="w-20 text-center">Date</th>
+                                            <th className="w-20text-center">Email</th>
+                                            <th className="w-20 text-center">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="employee-table-body">
                                         {data.length > 0 ? (
                                             data.map((element, index) => (
                                                 <tr key={element.id} className="w-100">
-                                                    <td className="w-15 text-center">{element.RowNumber}</td>
-                                                    <td className="w-25 text-center">{element.name}</td>
-                                                    <td className="w-20 text-center">{formatDateToDMY(new Date(element.date))}</td>
-                                                    <td className="w-25 text-center">{element.email}</td>
+                                                    <td className="text-center">{element.RowNumber}</td>
+                                                    <td className="text-center">{element.name}</td>
+                                                    <td className="text-center">{formatDateToDMY(new Date(element.date))}</td>
+                                                    <td className="text-center">{element.email}</td>
                                                     <td
-                                                        className="w-15 text-center"
+                                                        className="text-center text-bold">
                                                         style={{ color: element.status === "Attended" ? "green" : "red" }}
                                                     >
                                                         {element.status}
@@ -175,7 +175,7 @@ function EmployeeAttendance() {
                                             ))
                                         ) : (
                                             <tr className="w-100 border-0" colSpan="5">
-                                                <td colSpan="5" className="text-center">No matching records found</td>
+                                                <td colSpan="5" className="text-center text-bold">No matching records found</td>
                                             </tr>
                                         )}
                                     </tbody>

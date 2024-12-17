@@ -59,7 +59,8 @@
 
 .search-bar-container {
   position: relative;
-  max-width: 300px; /* Optional: Adjust width */
+  max-width: 250px; /* Optional: Adjust width */
+  margin-top: 5px;
 }
 
 .search-bar {
@@ -68,6 +69,7 @@
   border: 1px solid #ced4da;
   border-radius: 50px; /* Rounded corners */
   padding-right: 40px; /* Space for the icon */
+  font-size: 14px;
 }
 
 .search-bar-icon {
@@ -78,31 +80,42 @@
   pointer-events: none;
   font-size: 18px;
   color: #6c757d;
+  border: none;
+  box-shadow: none;
 }
 
 .reset-btn, .download-btn {
-  width: 150px; /* Ensure both buttons have the same width */
-  padding: 10px 20px; /* Adjust padding as needed */
+  width: 120px; /* Ensure both buttons have the same width */
+  padding: 10px 10px; /* Adjust padding as needed */
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px; /* Optional for rounded edges */
 }
 
 .reset-btn {
   background-color: #24757E; /* Light red for Reset button */
   color: white; /* Darker red for text */
+} 
+
+.reset-btn:hover {
+  background-color: #45919A; /* Light red for Reset button */
+  color: white; /* Darker red for text */
 }
 
 .download-btn {
   background-color: #24757E; /* Light green for Download button */
   color: white; /* Darker green for text */
-}
+} 
 
+.download-btn:hover {
+  background-color: #45919A; /* Light red for Reset button */
+  color: white; /* Darker red for text */
+}
 
 /* Card Styling */
 .card.shadow-sm {
   height: 100%; /* Allow the card to take full height of the available space */
-  padding: 20px; /* Ensure consistent inner spacing */
+  padding: 5px; /* Ensure consistent inner spacing */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between content */
@@ -135,18 +148,20 @@
 /* Scrollable Table */
 .scrollable-table {
   flex-grow: 1; /* Allow the table container to expand within the card */
-  height: calc(100vh - 350px); /* Adjust height dynamically based on page content */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: auto; /* Enable horizontal scrolling */
-  border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
   margin-top: 10px; /* Space above the table */
   background-color: #ffffff;
+  border-radius: 5px;
 }
 
 /* Table Styles */
 .attendance-table {
   width: 100%; /* Ensure table spans full width */
   border-collapse: collapse; /* Collapse table borders for a clean look */
+  border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .attendance-table th,
@@ -180,7 +195,8 @@
   border: 1px solid #ddd; /* Border around the picker */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
-  padding: 10px; /* Padding inside the picker container */
+  padding: 8px; /* Padding inside the picker container */
+  font-size: 14px; /* Adjust font size for readability */
 }
 
 /* Icons in Buttons */
