@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {toast, ToastContainer} from 'react-toastify';
+import CloseButton from '../assets/close-button.png';
 import '../css/AddAttendancePopup.css';
 
 const AddAttendancePopup = ({ closePopup }) => {
@@ -57,8 +58,11 @@ const AddAttendancePopup = ({ closePopup }) => {
 
     return (
         <div className='text-white'>
+            <div className='close-button-container'>
+                    <img src={CloseButton} alt='Close' className='close-button' onClick={closePopup}/>
+            </div>
             <h5 className='text-center mb-3'>Attendance</h5>
-            <form className='align-content-center'>
+            <form className='align-content-center'  style={{ position: 'relative' }}>
                 <div className='d-flex justify-content-between align-items-start mb-3'>
                     <label htmlFor='name' className='pt-2 w-25 text-start'>User Name</label>
                     <input type="text" placeholder='User Name' className='w-75' required onChange={(e) => setName(e.target.value)}/>

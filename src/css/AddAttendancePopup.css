@@ -5,6 +5,23 @@ form {
     padding: 15px;
     box-shadow: none; /* Optional: Add a shadow */
     border-radius: 8px; /* Rounded corners */
+} 
+
+.close-button-container {
+    position: relative; /* Ensure the close button is relative to the form */
+    width: 100%; /* Make sure it spans the form width */
+    height: 24px; /* Optional: Adjust height */
+    margin-top: 5px; /* Optional: Adjust margin */
+}
+
+/* Style for the close button */
+.close-button {
+    position: absolute; /* Position the button within its container */
+    top: 0;
+    right: 25px;
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    width: 24px; /* Adjust icon size as needed */
+    height: 24px; /* Adjust icon size as needed */
 }
 
 .d-flex {
