@@ -110,46 +110,46 @@ function EmployeeAttendance() {
                 ☰
             </button>
             <div className={`flex-grow-1 d-flex`}>
-                <div className={`sidebar-container ${sidebarVisible ? 'show-sidebar' : ''}`} style={{ flexShrink: 0 }}>
+                <div className={`ekr-sidebar-container ${sidebarVisible ? 'show-sidebar' : ''}`} style={{ flexShrink: 0 }}>
                     <Sidebar sidebarVisible={sidebarVisible} />
                 </div>
 
                 {/* Content Container */}
-                <div className="content-container flex-grow-1 p-4">
+                <div className="ekr-content-container flex-grow-1 p-4">
                     <h5 className="mt-5">
                         Home / <span style={{ color: "#24757E" }}>Attendance</span>
                     </h5>
-                    <div className="card mt-2 card-container-height border-0">
+                    <div className="card mt-2 ekr-card-container-height border-0">
                         <div className="card-body">
-                            <h4 className="employee-attendance-page-title text-center mt-1">Attendance</h4>
-                            <div className="employee-button-container d-flex justify-content-between mt-1">
+                            <h4 className="ekr-employee-attendance-page-title text-center mt-1">Attendance</h4>
+                            <div className="ekr-employee-button-container d-flex justify-content-between mt-1">
                                 {/* Search Bar */}
-                                <div className="employee-search-bar-container position-relative d-flex ms-2">
+                                <div className="ekr-employee-search-bar-container position-relative d-flex ms-2">
                                     <input
                                         type="text"
-                                        className="form-control employee-search-bar"
+                                        className="form-control ekr-employee-search-bar"
                                         placeholder="Enter the text"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
                                     />
-                                    <button className="btn employee-search-bar-icon">
-                                        <img alt="Search Icon" src={searchIcon} className="search-bar-icon"/>
+                                    <button className="btn ekr-employee-search-bar-icon">
+                                        <img alt="Search Icon" src={searchIcon} className="ekr-search-bar-icon"/>
                                         {/* <i className="bi bi-search"></i> */}
                                     </button>
                                 </div>
                                 {/* Add Attendance Button */}
-                                <button className="add-attendance-button me-2" onClick={addAttendance}>
+                                <button className="ekr-add-attendance-button me-2" onClick={addAttendance}>
                                     Add Attendance
                                     <img
                                         alt="Add Icon"
                                         src={circlePlusIcon}
-                                        className="add-attendance-button-icon"
+                                        className="ekr-add-attendance-button-icon"
                                     />
                                 </button>
                             </div>
                             {/* Table Container */}
-                            <div className="employee-attendance-table-container mt-1">
-                                <table className="table table-bordered employee-attendance-table">
+                            <div className="ekr-employee-attendance-table-container mt-1">
+                                <table className="table table-bordered ekr-employee-attendance-table">
                                     <thead className="thead-light">
                                         <tr className="text-center">
                                             <th className="w-20 text-center">No</th>
@@ -167,14 +167,17 @@ function EmployeeAttendance() {
                                                     <td className="text-center">{element.name}</td>
                                                     <td className="text-center">{formatDateToDMY(new Date(element.date))}</td>
                                                     <td className="text-center">{element.email}</td>
-                                                    <td className="text-center text-bold" style={{ color: element.status === "Attended" ? "green" : "red" }}>
+                                                    <td className="text-center text-bold">
                                                         {element.status}
                                                     </td>
+                                                    {/* <td className="text-center text-bold" style={{ color: element.status === "Attended" ? "green" : "red" }}>
+                                                        {element.status}
+                                                    </td> */}
                                                 </tr>
                                             ))
                                         ) : (
                                             <tr className="w-100 border-0" colSpan="5">
-                                                <td colSpan="5" className="text-center text-bold">No matching records found</td>
+                                                <td colSpan="5" className="text-center fw-bold">No matching records found</td>
                                             </tr>
                                         )}
                                     </tbody>
@@ -188,8 +191,8 @@ function EmployeeAttendance() {
             <Footer />
             {/* Popup */}
             {openPopup && (
-                <div className="popup-overlay">
-                    <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+                <div className="ekr-popup-overlay">
+                    <div className="ekr-popup-content" onClick={(e) => e.stopPropagation()}>
                         <AddAttendancePopup closePopup={closePopup} />
                     </div>
                 </div>
@@ -197,7 +200,6 @@ function EmployeeAttendance() {
             {/* Toast Notification */}
             <ToastContainer />
         </div>
-        
     );
 }
 

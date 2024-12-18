@@ -116,7 +116,7 @@ const AdminAttendance = () => {
       <div className={`flex-grow-1 d-flex ${sidebarVisible ? 'show-sidebar' : ''}`}>
         <Sidebar sidebarVisible={sidebarVisible} />
         <div className="main-content p-4">
-            <div className="breadcrumb mb-1">
+            <div className="ekr-breadcrumb mb-1">
               <h5>
                 Home /{' '}
                 <span style={{ color: '#24757E' }}>Attendance</span>
@@ -125,19 +125,19 @@ const AdminAttendance = () => {
 
             <div className="card shadow-sm border-0">
               <div className="card-body">
-                <h4 className="page-title text-center">Attendance</h4>
+                <h4 className="ekr-page-title text-center">Attendance</h4>
 
-                <div className="controls-section d-flex justify-content-between align-items-center my-2">
+                <div className="ekr-controls-section d-flex justify-content-between align-items-center my-2">
                   <div className="d-flex align-items-center position-relative">
                     <button
-                        className="btn control-btn me-2 d-flex align-items-center justify-content-between mb-1 pb-1"
+                        className="btn ekr-control-btn me-2 d-flex align-items-center justify-content-between mb-1 pb-1"
                         onClick={handleSortDateClick}
                     >
                       {selectedDate ? selectedDate.toLocaleDateString() : 'Sort Date'}
                       <i className="bi bi-calendar ms-2 border-0"></i>
                     </button>
                     {showDatePicker && (
-                        <div className="date-picker-container position-absolute">
+                        <div className="ekr-date-picker-container position-absolute">
                           <DatePicker
                               selected={selectedDate}
                               onChange={handleDateChange}
@@ -150,35 +150,35 @@ const AdminAttendance = () => {
                     )}
                   </div>
 
-                  <div className="search-bar-container position-relative d-flex">
+                  <div className="ekr-search-bar-container position-relative d-flex">
                     <input
                         type="text"
-                        className="form-control search-bar me-2"
+                        className="form-control ekr-search-bar me-2"
                         placeholder="Search"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="btn search-bar-icon">
-                      <img alt="Search Icon" src={searchIcon} className="search-icon"/>
+                    <button className="btn ekr-search-bar-icon">
+                      <img alt="Search Icon" src={searchIcon} className="ekr-search-icon"/>
                       {/* <i className="bi bi-search"></i> */}
                     </button>
                   </div>
                 </div>
 
-                <div className="d-flex gap-2 mb-1 button-row">
+                <div className="d-flex gap-2 mb-1 ekr-button-row">
                   <button
-                      className="btn reset-btn"
+                      className="btn ekr-reset-btn"
                       onClick={handleReset} // Updated to use handleReset
                   >
                     Reset
                   </button>
-                  <button className="btn download-btn" onClick={handleDownloadPDF}>
+                  <button className="btn ekr-download-btn" onClick={handleDownloadPDF}>
                     Download
                   </button>
                 </div>
 
-                <div className="scrollable-table">
-                  <table className="attendance-table table table-bordered">
+                <div className="ekr-scrollable-table">
+                  <table className="ekr-attendance-table table table-bordered">
                     <thead className="thead-light">
                       <tr className='w-100'>
                         <th className='w-15'>No</th>
@@ -195,12 +195,12 @@ const AdminAttendance = () => {
                           <td className='w-25'>{entry.name}</td>
                           <td className='w-20'>{formatDate(entry.date)}</td> {/* Display formatted date */}
                           <td className='w-25'>{entry.email}</td>
-                          <td className='w-15'>{entry.status}</td> 
+                          <td className='w-15 fw-bold'>{entry.status}</td> 
                         </tr>
                     ))}
                     {filteredData.length === 0 && (
                         <tr className='w-100 text-center'>
-                          <td className='w-100 border-0' colSpan="5">
+                          <td className='w-100 border-0 fw-bold' colSpan="5">
                             No matching records found
                           </td>
                         </tr>

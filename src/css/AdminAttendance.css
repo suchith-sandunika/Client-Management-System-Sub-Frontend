@@ -1,5 +1,5 @@
 /* Main Container */
-.admin-attendance-container {
+.ekr-admin-attendance-container {
   display: flex;
   flex-direction: column;
   height: 50vh;
@@ -15,13 +15,13 @@
 }
 
 /* Breadcrumb */
-.breadcrumb {
+.ekr-breadcrumb {
   font-size: 14px;
   color: #6c757d;
 }
 
 /* Page Title */
-.page-title {
+.ekr-page-title {
   font-size: 22px;
   font-weight: bold;
   color: #24757E;
@@ -29,7 +29,7 @@
 }
 
 /* Controls Section */
-.controls-section {
+.ekr-controls-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@
   gap: 10px;
 } 
 
-.control-btn {
+.ekr-control-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,12 +53,12 @@
   height: 35px;
 }
 
-.control-btn:hover {
+.ekr-control-btn:hover {
   background-color: #24757E;
   color: #ffffff;
 }
 
-.search-bar-container {
+.ekr-search-bar-container {
   position: relative;
   max-width: 250px; /* Optional: Adjust width */
   margin-top: 5px;
@@ -66,7 +66,7 @@
   align-items: center;
 }
 
-.search-bar {
+.ekr-search-bar {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid #ced4da;
@@ -75,10 +75,10 @@
   font-size: 14px;
 }
 
-.search-bar-icon {
+.ekr-search-bar-icon {
   position: absolute;
   right: 20px;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
   background: transparent;
   pointer-events: none;
@@ -91,44 +91,44 @@
   align-items: center;
 } 
 
-.search-icon {
+.ekr-search-icon {
   width: 25px;
   height: 25px;
 } 
 
 @media (max-width: 768px) {
-  .controls-section {
+  .ekr-controls-section {
     flex-wrap: nowrap; /* Ensure controls stay in a row */
   }
 
-  .search-bar-container {
+  .ekr-search-bar-container {
     max-width: 50%; /* Adjust width for smaller screens */
   }
 } 
 
 @media (max-width: 406px) {
-  .controls-section {
+  .ekr-controls-section {
     flex-wrap: nowrap; /* Ensure controls stay in a row */
     gap: 5px; /* Reduce gap */
   }
 
-  .control-btn {
+  .ekr-control-btn {
     min-width: 80px; /* Further reduce button width */
     height: 30px; /* Reduce height for smaller screens */
     font-size: 12px; /* Smaller font size */
   }
 
   .search-bar-container {
-    max-width: 45%; /* Adjust width for smaller screens */
+    max-width: 40%; /* Adjust width for smaller screens */
   }
 
-  .search-bar {
+  .ekr-search-bar {
     font-size: 12px; /* Smaller font size for search bar */
     padding: 6px 8px; /* Adjust padding */
   }
 }
 
-.reset-btn, .download-btn {
+.ekr-reset-btn, .ekr-download-btn {
   width: 100px; /* Ensure both buttons have the same width */
   padding: 8px 8px; /* Adjust padding as needed */
   text-align: center;
@@ -136,27 +136,25 @@
   border-radius: 5px; /* Optional for rounded edges */
 }
 
-.reset-btn {
+.ekr-reset-btn {
   background-color: #24757E; /* Light red for Reset button */
   color: white; /* Darker red for text */
 } 
 
-.reset-btn:hover {
+.ekr-reset-btn:hover {
   background-color: #45919A; /* Light red for Reset button */
   color: white; /* Darker red for text */
 }
 
-.download-btn {
+.ekr-download-btn {
   background-color: #24757E; /* Light green for Download button */
   color: white; /* Darker green for text */
 } 
 
-.download-btn:hover {
+.ekr-download-btn:hover {
   background-color: #45919A; /* Light red for Reset button */
   color: white; /* Darker red for text */
 } 
-
-
 
 /* Card Styling */
 .card.shadow-sm {
@@ -165,7 +163,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between content */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  box-shadow: none;
 }
 
 /* Card Body */
@@ -182,7 +180,7 @@
 }
 
 /* Table Container */
-.table-container {
+.ekr-table-container {
   background-color: #ffffff; /* White background for the box */
   border: 1px solid #ddd; /* Border around the box */
   border-radius: 8px; /* Rounded corners */
@@ -192,7 +190,7 @@
 }
 
 /* Scrollable Table */
-.scrollable-table {
+.ekr-scrollable-table {
   flex-grow: 1; /* Allow the table container to expand within the card */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: auto; /* Enable horizontal scrolling */
@@ -202,7 +200,7 @@
 }
 
 /* Table Styles */
-.attendance-table {
+.ekr-attendance-table {
   width: 100%; /* Ensure table spans full width */
   border-collapse: collapse; /* Collapse table borders for a clean look */
   border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
@@ -210,29 +208,29 @@
   font-size: 12px;
 }
 
-.attendance-table th,
-.attendance-table td {
+.ekr-attendance-table th,
+.ekr-attendance-table td {
   text-align: center; /* Center align text */
   padding: 12px; /* Add padding for cells */
   border: 1px solid #ddd; /* Border around table cells */
 }
 
-.attendance-table th {
+.ekr-attendance-table th {
   background-color: #f8f9fa; /* Light gray background for headers */
   color: #000000; /* Black text for headers */
   font-weight: bold; /* Bold header text */
 }
 
-.attendance-table tbody tr:nth-child(even) {
+.ekr-attendance-table tbody tr:nth-child(even) {
   background-color: #f2f2f2; /* Light gray background for even rows */
 }
 
-.attendance-table tbody tr:hover {
+.ekr-attendance-table tbody tr:hover {
   background-color: #f1f1f1; /* Highlight row on hover */
 }
 
 /* Date Picker Container */
-.date-picker-container {
+.ekr-date-picker-container {
   z-index: 1050; /* Ensures date picker appears above other elements */
   top: 100%; /* Aligns right below the button */
   left: 0;
@@ -245,54 +243,51 @@
   font-size: 14px; /* Adjust font size for readability */
 }
 
-.control-btn {
+.ekr-control-btn {
   height: 40px;
 }
 
 /* Icons in Buttons */
-.control-btn i {
+.ekr-control-btn i {
   margin-bottom: 1px; /* Adjust icon alignment */
   margin-top: -1px;
   font-size: 1rem; /* Adjust calendar icon size */
   vertical-align: middle;
 }
 
-.search-bar-icon-btn i {
+.ekr-search-bar-icon-btn i {
   font-size: 1.2rem; /* Adjust search icon size */
   vertical-align: middle;
 } 
 
-
-
-
 /* Responsive Design for Mobile Devices */
 @media (max-width: 768px) { /* Adjust as necessary for your mobile breakpoint */
 
-  .controls-section {
+  .ekr-controls-section {
       flex-direction: row; /* Align controls in a row for mobile view */
       justify-content: flex-start; /* Align items to start of the container */
       align-items: center; /* Center items vertically */
       gap: 10px; /* Adjust gap between items as needed */
   }
 
-  .search-bar-container {
+  .ekr-search-bar-container {
       width: auto; /* Allow full width on mobile */
       margin-top: 0; /* Remove margin-top to align with other controls */
   }
 
-  .search-bar {
+  .ekr-search-bar {
       width: calc(100% - 40px); /* Fit search bar beside sort date control */
       padding-right: 40px; /* Space for the icon */
   }
 
-  .search-bar-icon {
+  .ekr-search-bar-icon {
       position: absolute;
       right: 10px; /* Position of search icon */
       top: 50%; /* Center icon vertically */
       transform: translateY(-50%); /* Adjust vertical alignment */
   }
 
-  .sort-date-container { /* Assuming you have a sort date container class */
+  .ekr-sort-date-container { /* Assuming you have a sort date container class */
       min-width: 120px; /* Set minimum width to ensure usability */
   }
 }
