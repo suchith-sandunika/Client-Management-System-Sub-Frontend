@@ -188,8 +188,8 @@ footer {
 /* Table Container */
 .ekr-table-container {
   background-color: #ffffff; /* White background for the box */
-  border: 1px solid #ddd; /* Border around the box */
-  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   margin-top: 10px;
   overflow: hidden; 
@@ -222,31 +222,31 @@ footer {
 }
 
 .ekr-attendance-table th {
-  background-color: #f8f9fa; /* Light gray background for headers */
-  color: #000000; /* Black text for headers */
-  font-weight: bold; /* Bold header text */
+  background-color: #f8f9fa; 
+  color: #000000; 
+  font-weight: bold; 
 }
 
 .ekr-attendance-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray background for even rows */
+  background-color: #f2f2f2; 
 }
 
 .ekr-attendance-table tbody tr:hover {
-  background-color: #f1f1f1; /* Highlight row on hover */
+  background-color: #f1f1f1; 
 }
 
 /* Date Picker Container */
 .ekr-date-picker-container {
-  z-index: 1050; /* Ensures date picker appears above other elements */
-  top: 100%; /* Aligns right below the button */
+  z-index: 1050; 
+  top: 100%; 
   left: 0;
   position: absolute;
-  background-color: #ffffff; /* White background for the picker */
-  border: 1px solid #ddd; /* Border around the picker */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
-  padding: 6px; /* Padding inside the picker container */
-  font-size: 14px; /* Adjust font size for readability */
+  background-color: #ffffff; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 6px; 
+  font-size: 14px; 
 }
 
 .ekr-control-btn {
@@ -267,42 +267,42 @@ footer {
 } 
 
 /* Responsive Design for Mobile Devices */
-@media (max-width: 768px) { /* Adjust as necessary for your mobile breakpoint */
+@media (max-width: 768px) { 
 
   .ekr-controls-section {
-      flex-direction: row; /* Align controls in a row for mobile view */
-      justify-content: flex-start; /* Align items to start of the container */
-      align-items: center; /* Center items vertically */
-      gap: 10px; /* Adjust gap between items as needed */
+      flex-direction: row; 
+      justify-content: flex-start;
+      align-items: center; 
+      gap: 10px; 
   }
 
   .ekr-search-bar-container {
-      width: auto; /* Allow full width on mobile */
-      margin-top: 0; /* Remove margin-top to align with other controls */
+      width: auto; 
+      margin-top: 0; 
   }
 
   .ekr-search-bar {
-      width: calc(100% - 40px); /* Fit search bar beside sort date control */
-      padding-right: 40px; /* Space for the icon */
+      width: calc(100% - 40px); 
+      padding-right: 40px; 
   }
 
   .ekr-search-bar-icon {
       position: absolute;
-      right: 10px; /* Position of search icon */
-      top: 50%; /* Center icon vertically */
-      transform: translateY(-50%); /* Adjust vertical alignment */
+      right: 10px; 
+      top: 50%; 
+      transform: translateY(-50%); 
   }
 
-  .ekr-sort-date-container { /* Assuming you have a sort date container class */
+  .ekr-sort-date-container { 
       min-width: 120px; /* Set minimum width to ensure usability */
   }
 
   .scrollable-table-container {
-    max-height: 400px; /* Set a maximum height for the scrollable area */
-    overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 10px; /* Optional: Add some margin above the table */
-    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
-    border-radius: 5px; /* Optional: Rounded corners */
+    max-height: 400px; 
+    overflow-y: auto; 
+    margin-top: 10px;
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
 }
 }
 /* Add this inside your existing media query for screens smaller than 768px */

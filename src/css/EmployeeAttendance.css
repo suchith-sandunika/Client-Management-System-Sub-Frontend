@@ -279,3 +279,12 @@
 .ekr-w-20 {
     width: 20% !important;
 }
+@media (max-width: 768px) {
+    .sidebar-toggle {
+      position: fixed; 
+      top: 10px; 
+      left: 360px; 
+      z-index: 9999; 
+    }
+  }
+  
