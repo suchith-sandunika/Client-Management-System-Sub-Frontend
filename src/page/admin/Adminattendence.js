@@ -214,7 +214,7 @@ const AdminAttendance = () => {
       </div>
 
       {/* Scrollable Footer */}
-      {/* Ensure the footer is part of the scrollable area */}
+      {/*  */}
       <Footer style={{ position: 'relative', bottom: '0', width: '100%', zIndex: '10' }} />              
     </div>
   );

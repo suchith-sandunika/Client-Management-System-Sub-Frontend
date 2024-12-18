@@ -164,11 +164,11 @@ footer {
 
 /* Card Styling */
 .card.shadow-sm {
-  height: 100%; /* Allow the card to take full height of the available space */
-  padding: 5px; /* Ensure consistent inner spacing */
+  height: 100%; 
+  padding: 5px; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space between content */
+  justify-content: space-between; 
   box-shadow: none;
 }
 
@@ -176,13 +176,13 @@ footer {
 .card-body {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 350px); /* Adjust height relative to viewport */
-  overflow: hidden; /* Prevent content overflow */
+  height: calc(100vh - 350px); 
+  overflow: hidden; 
   padding: 2px;
 }
 
 .card-body > *:not(:last-child) {
-  margin-bottom: 15px; /* Space between sections inside the card */
+  margin-bottom: 15px; 
 }
 
 /* Table Container */
@@ -190,35 +190,35 @@ footer {
   background-color: #ffffff; /* White background for the box */
   border: 1px solid #ddd; /* Border around the box */
   border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visual effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   margin-top: 10px;
-  overflow: hidden; /* Prevent content overflow */
+  overflow: hidden; 
 }
 
 /* Scrollable Table */
 .ekr-scrollable-table {
-  flex-grow: 1; /* Allow the table container to expand within the card */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  margin-top: 10px; /* Space above the table */
+  flex-grow: 1; 
+  overflow-y: auto; 
+  overflow-x: auto; 
+  margin-top: 10px; 
   background-color: #ffffff;
   border-radius: 5px;
 }
 
 /* Table Styles */
 .ekr-attendance-table {
-  width: 100%; /* Ensure table spans full width */
-  border-collapse: collapse; /* Collapse table borders for a clean look */
-  border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
+  width: 100%; 
+  border-collapse: collapse; 
+  border: 1px solid #8c8c8c33; 
   border-radius: 5px;
   font-size: 12px;
 }
 
 .ekr-attendance-table th,
 .ekr-attendance-table td {
-  text-align: center; /* Center align text */
-  padding: 12px; /* Add padding for cells */
-  border: 1px solid #ddd; /* Border around table cells */
+  text-align: center; 
+  padding: 12px; 
+  border: 1px solid #ddd; 
 }
 
 .ekr-attendance-table th {
@@ -315,12 +315,20 @@ footer {
 
   .ekr-reset-btn {
     /* Ensure the Reset button stays on the left side */
-    order: 1; /* Keep it first */
+    order: 1; 
   }
 
   .ekr-download-btn {
-    /* Push the Download button to the right side */
-    order: 2; /* Make it second */
-    margin-left: auto; /* Push it to the right */
+    
+    order: 2; 
+    margin-left: auto; 
+  }
+}
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    position: fixed; 
+    top: 10px; 
+    left: 360px; 
+    z-index: 9999; 
   }
 }
