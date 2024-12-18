@@ -290,4 +290,12 @@
   .ekr-sort-date-container { /* Assuming you have a sort date container class */
       min-width: 120px; /* Set minimum width to ensure usability */
   }
+
+  .scrollable-table-container {
+    max-height: 400px; /* Set a maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px; /* Optional: Add some margin above the table */
+    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
 }
