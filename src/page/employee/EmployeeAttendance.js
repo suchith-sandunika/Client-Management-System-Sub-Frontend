@@ -4,7 +4,8 @@ import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
 import AddAttendancePopup from "../../components/AddAttendancePopup";
-import circlePlusIcon from "../../assets/image.png";
+import circlePlusIcon from "../../assets/plusIcon.png";
+import searchIcon from "../../assets/image.png"
 import 'react-toastify/dist/ReactToastify.css';
 import "../../css/EmployeeAttendance.css";
 
@@ -132,14 +133,15 @@ function EmployeeAttendance() {
                                         onChange={handleSearchChange}
                                     />
                                     <button className="btn employee-search-bar-icon">
-                                        <i className="bi bi-search"></i>
+                                        <img alt="Search Icon" src={searchIcon} className="search-bar-icon"/>
+                                        {/* <i className="bi bi-search"></i> */}
                                     </button>
                                 </div>
                                 {/* Add Attendance Button */}
                                 <button className="add-attendance-button me-2" onClick={addAttendance}>
                                     Add Attendance
                                     <img
-                                        alt="Add icon"
+                                        alt="Add Icon"
                                         src={circlePlusIcon}
                                         className="add-attendance-button-icon"
                                     />

@@ -35,7 +35,7 @@
   justify-content: space-between;
   margin-bottom: 5px;
   gap: 10px;
-}
+} 
 
 .control-btn {
   display: flex;
@@ -45,11 +45,12 @@
   background-color: #ffffff;
   border: 1px solid #24757E;
   color: #24757E;
-  padding: 10px 15px;
+  padding: 5px 10px;
   font-size: 14px;
   border-radius: 50px; /* Rounded corners */
   cursor: pointer;
-  min-width: 120px; /* Ensure consistent button size */
+  min-width: 100px; /* Ensure consistent button size */
+  height: 35px;
 }
 
 .control-btn:hover {
@@ -61,11 +62,13 @@
   position: relative;
   max-width: 250px; /* Optional: Adjust width */
   margin-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .search-bar {
-  width: 250px;
-  padding: 10px;
+  width: 100%;
+  padding: 8px 10px;
   border: 1px solid #ced4da;
   border-radius: 50px; /* Rounded corners */
   padding-right: 40px; /* Space for the icon */
@@ -74,19 +77,60 @@
 
 .search-bar-icon {
   position: absolute;
-  right: 10px;
-  top: 50%;
+  right: 20px;
+  top: 45%;
   transform: translateY(-50%);
+  background: transparent;
   pointer-events: none;
   font-size: 18px;
   color: #6c757d;
   border: none;
   box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+} 
+
+.search-icon {
+  width: 25px;
+  height: 25px;
+} 
+
+@media (max-width: 768px) {
+  .controls-section {
+    flex-wrap: nowrap; /* Ensure controls stay in a row */
+  }
+
+  .search-bar-container {
+    max-width: 50%; /* Adjust width for smaller screens */
+  }
+} 
+
+@media (max-width: 406px) {
+  .controls-section {
+    flex-wrap: nowrap; /* Ensure controls stay in a row */
+    gap: 5px; /* Reduce gap */
+  }
+
+  .control-btn {
+    min-width: 80px; /* Further reduce button width */
+    height: 30px; /* Reduce height for smaller screens */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .search-bar-container {
+    max-width: 45%; /* Adjust width for smaller screens */
+  }
+
+  .search-bar {
+    font-size: 12px; /* Smaller font size for search bar */
+    padding: 6px 8px; /* Adjust padding */
+  }
 }
 
 .reset-btn, .download-btn {
-  width: 120px; /* Ensure both buttons have the same width */
-  padding: 10px 10px; /* Adjust padding as needed */
+  width: 100px; /* Ensure both buttons have the same width */
+  padding: 8px 8px; /* Adjust padding as needed */
   text-align: center;
   font-size: 14px;
   border-radius: 5px; /* Optional for rounded edges */
@@ -110,7 +154,9 @@
 .download-btn:hover {
   background-color: #45919A; /* Light red for Reset button */
   color: white; /* Darker red for text */
-}
+} 
+
+
 
 /* Card Styling */
 .card.shadow-sm {
@@ -161,7 +207,7 @@
   border-collapse: collapse; /* Collapse table borders for a clean look */
   border: 1px solid #8c8c8c33; /* Optional: Border for better distinction */
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .attendance-table th,
@@ -195,12 +241,18 @@
   border: 1px solid #ddd; /* Border around the picker */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
-  padding: 8px; /* Padding inside the picker container */
+  padding: 6px; /* Padding inside the picker container */
   font-size: 14px; /* Adjust font size for readability */
+}
+
+.control-btn {
+  height: 40px;
 }
 
 /* Icons in Buttons */
 .control-btn i {
+  margin-bottom: 1px; /* Adjust icon alignment */
+  margin-top: -1px;
   font-size: 1rem; /* Adjust calendar icon size */
   vertical-align: middle;
 }
@@ -208,5 +260,5 @@
 .search-bar-icon-btn i {
   font-size: 1.2rem; /* Adjust search icon size */
   vertical-align: middle;
-}
+} 
 

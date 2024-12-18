@@ -3,6 +3,7 @@ import Navbar from '../../components/templetes/Navbar';
 import Footer from '../../components/PagesFooter';
 import Sidebar from '../../components/templetes/SideBar';
 import DatePicker from 'react-datepicker';
+import searchIcon from '../../assets/image.png';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/AdminAttendance.css';
 import 'jspdf-autotable';
@@ -129,7 +130,7 @@ const AdminAttendance = () => {
                 <div className="controls-section d-flex justify-content-between align-items-center my-2">
                   <div className="d-flex align-items-center position-relative">
                     <button
-                        className="btn control-btn me-2 d-flex align-items-center justify-content-between mb-1"
+                        className="btn control-btn me-2 d-flex align-items-center justify-content-between mb-1 pb-1"
                         onClick={handleSortDateClick}
                     >
                       {selectedDate ? selectedDate.toLocaleDateString() : 'Sort Date'}
@@ -158,12 +159,13 @@ const AdminAttendance = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <button className="btn search-bar-icon">
-                      <i className="bi bi-search"></i>
+                      <img alt="Search Icon" src={searchIcon} className="search-icon"/>
+                      {/* <i className="bi bi-search"></i> */}
                     </button>
                   </div>
                 </div>
 
-                <div className="d-flex gap-2 mb-1">
+                <div className="d-flex gap-2 mb-1 button-row">
                   <button
                       className="btn reset-btn"
                       onClick={handleReset} // Updated to use handleReset

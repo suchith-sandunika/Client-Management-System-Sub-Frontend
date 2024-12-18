@@ -62,21 +62,23 @@
 .employee-button-container {
     margin-top: 15px;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: nowrap; /* Allow wrapping for smaller screens */
     justify-content: space-between;
     gap: 10px; /* Add spacing between buttons */
+    align-items: center;
 } 
 
 @media (max-width: 768px) {
     .employee-button-container {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-wrap: nowrap; /* Ensure buttons stay in a row */
     }
 }
 
 .employee-search-bar-container {
     position: relative;
-    max-width: 250px;
-    width: 100%;
+    flex-grow: 1; /* Allow search bar to grow */
+    max-width: 40%;
+    margin-right: 10px; 
 }
 
 .employee-search-bar {
@@ -87,6 +89,12 @@
     padding-bottom: 10px;
     margin-right: 10px;
     font-size: 14px;
+} 
+
+@media (min-width: 768px) {
+    .employee-search-bar-container {
+        max-width: 20%; /* Adjust max width for smaller screens */
+    } 
 }
 
 .employee-search-bar-icon {
@@ -100,8 +108,32 @@
     border: none;
     box-shadow: none;
     margin-top: 2px;
-}
+}  
 
+.search-bar-icon {
+    margin-top: 2px;
+    width: 30px;
+    height: 25px;
+} 
+
+@media (max-width: 768px) {
+    .employee-search-bar-icon {
+        margin-left: 25px; /* Adjust icon position for smaller screens */
+    }
+} 
+
+@media (max-width: 408px) {
+    .employee-search-bar-container {
+        max-width: 45%; /* Adjust max width for smaller screens */
+    }  
+
+    .search-bar-icon {
+        margin-top: 2px;
+        width: 25px;
+        height: 22px;
+    }
+}
+ 
 .add-attendance-button {
     background-color: #24757E;
     border-radius: 8px;
@@ -114,6 +146,11 @@
     cursor: pointer;
     font-size: 14px;
     margin-top: 1px;
+    white-space: nowrap; /* Prevent text wrapping */
+    flex-shrink: 1; /* Allow shrinking */
+    max-width: 35%; /* Adjustable max width */
+    min-width: 120px; /* Prevent button from shrinking too much */
+    justify-content: center; /* Center text and icon */
 }
 
 .add-attendance-button:hover {
@@ -121,14 +158,27 @@
 }
 
 .add-attendance-button-icon {
-    width: 25px;
+    width: 26px;
     height: 25px;
 }
 
 @media (max-width: 768px) {
     .add-attendance-button {
-        width: 100%; /* Full width for mobile screens */
-        justify-content: center;
+        max-width: 33%; /* Adjust max width for smaller screens */
+        padding: 8px 25px 8px 25px; /* Reduce padding for smaller buttons */
+    }
+} 
+
+@media (max-width: 408px) {
+    .add-attendance-button {
+        max-width: 45%; /* Adjust max width for smaller screens */
+        padding: 5px 25px 5px 25px; /* Reduce padding for smaller buttons */
+        margin-top: 7px;
+    } 
+
+    .add-attendance-button-icon {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -137,21 +187,34 @@
     max-height: 400px;
     overflow-y: auto;
     background-color: #ffffff;
-    border-radius: 10px;
     margin: 10px;
-    font-size: 14px;
+    font-size: 12px;
+    border-radius: 10px;
+} 
+
+@media (max-width: 768px) {
+    .employee-attendance-table-container {
+        padding: 5px; /* Reduce padding on smaller screens */
+    }
+} 
+
+@media (max-width: 408px) {
+    .employee-attendance-table-container {
+        padding: 1px; /* Reduce padding on smaller screens */
+    }
 }
 
 .employee-attendance-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px; /* Adjust font size for readability */
+    font-size: 12px; /* Adjust font size for readability */
     border: 1px solid #8c8c8c33;
+    border-radius: 10px;
 }
 
 .employee-attendance-table th,
 .employee-attendance-table td {
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #ddd;
     text-align: center; /* Center-align text for all cells */
 }
