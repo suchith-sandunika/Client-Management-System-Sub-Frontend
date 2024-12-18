@@ -2,17 +2,23 @@
 .ekr-admin-attendance-container {
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 100vh; /* Full height of viewport */
 }
 
 /* Main Content */
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  margin-top: 50px; /* Push content below the navbar */
-  display: flex;
-  flex-direction: column; /* Space between elements inside the main content */
 }
+
+/* Footer Styling */
+footer {
+   background-color: #f8f9fa; /* Optional background color */
+   border-top: 1px solid #ddd; /* Optional border for separation */
+   padding: 10px; /* Padding for footer content */
+   text-align: center; /* Center align footer text */
+}
+
 
 /* Breadcrumb */
 .ekr-breadcrumb {
