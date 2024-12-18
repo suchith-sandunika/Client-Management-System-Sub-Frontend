@@ -332,3 +332,9 @@ footer {
     z-index: 9999; 
   }
 }
+/* Breadcrumb Styling */
+.ekr-breadcrumb {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 20px; /* Add space below navbar */
+}
