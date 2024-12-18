@@ -262,3 +262,37 @@
   vertical-align: middle;
 } 
 
+
+
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) { /* Adjust as necessary for your mobile breakpoint */
+
+  .controls-section {
+      flex-direction: row; /* Align controls in a row for mobile view */
+      justify-content: flex-start; /* Align items to start of the container */
+      align-items: center; /* Center items vertically */
+      gap: 10px; /* Adjust gap between items as needed */
+  }
+
+  .search-bar-container {
+      width: auto; /* Allow full width on mobile */
+      margin-top: 0; /* Remove margin-top to align with other controls */
+  }
+
+  .search-bar {
+      width: calc(100% - 40px); /* Fit search bar beside sort date control */
+      padding-right: 40px; /* Space for the icon */
+  }
+
+  .search-bar-icon {
+      position: absolute;
+      right: 10px; /* Position of search icon */
+      top: 50%; /* Center icon vertically */
+      transform: translateY(-50%); /* Adjust vertical alignment */
+  }
+
+  .sort-date-container { /* Assuming you have a sort date container class */
+      min-width: 120px; /* Set minimum width to ensure usability */
+  }
+}

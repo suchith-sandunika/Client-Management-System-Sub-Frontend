@@ -195,7 +195,7 @@ const AdminAttendance = () => {
                           <td className='w-25'>{entry.name}</td>
                           <td className='w-20'>{formatDate(entry.date)}</td> {/* Display formatted date */}
                           <td className='w-25'>{entry.email}</td>
-                          <td className='w-15'>{entry.status}</td> {/* Always display "Attended" */}
+                          <td className='w-15'>{entry.status}</td> 
                         </tr>
                     ))}
                     {filteredData.length === 0 && (
