@@ -7,7 +7,7 @@ form {
     border-radius: 8px; /* Rounded corners */
 } 
 
-.close-button-container {
+.ekr-close-button-container {
     position: relative; /* Ensure the close button is relative to the form */
     width: 100%; /* Make sure it spans the form width */
     height: 24px; /* Optional: Adjust height */
@@ -15,14 +15,18 @@ form {
 }
 
 /* Style for the close button */
-.close-button {
+.ekr-close-button {
     position: absolute; /* Position the button within its container */
     top: 0;
     right: 25px;
     cursor: pointer; /* Change cursor to pointer for better UX */
-    width: 24px; /* Adjust icon size as needed */
-    height: 24px; /* Adjust icon size as needed */
-}
+    width: 30px; /* Adjust icon size as needed */
+    height: 30px; /* Adjust icon size as needed */
+} 
+
+.ekr-close-button:hover {
+    background-color: coral;
+} 
 
 .d-flex {
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
@@ -83,6 +87,14 @@ button:hover {
 /* Toast container adjustments */
 .ToastContainer {
     margin-top: 20px;
+} 
+
+.ekr-custom-toast-container {
+    position: fixed;
+    top: 20px; /* Adjust the distance from the top of the screen */
+    right: 20px; /* Adjust the distance from the right side of the screen */
+    left: auto;
+    bottom: auto;
 }
 
 /* Media Queries */

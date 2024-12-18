@@ -55,7 +55,7 @@ const AdminAttendance = () => {
     const year = d.getFullYear();
     const month = ('0' + (d.getMonth() + 1)).slice(-2);
     const day = ('0' + d.getDate()).slice(-2);
-    return `${year}-${month}-${day}`; // Only the date portion
+    return `${day}-${month}-${year}`; // Only the date portion
   };
 
   // Enhanced Filter logic based on search term and selected date
