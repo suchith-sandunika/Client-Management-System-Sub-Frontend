@@ -21,12 +21,12 @@ function EmployeeAttendance() {
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
-        return `${year}/${month}/${day}`;
+        return `${day}-${month}-${year}`;
     }; 
 
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
-    };
+    }; 
 
     const viewAllAttendances = async () => {
         try {
@@ -84,7 +84,7 @@ function EmployeeAttendance() {
         const input = e.target.value;
         setSearchTerm(input); // Update the search term
         if (input) {
-            searchAttendance(input); // Trigger search
+            searchAttendance(input);
         } else {
             setData(allAttendances);  // Clear data if input is empty
         }
@@ -128,7 +128,7 @@ function EmployeeAttendance() {
                                     <input
                                         type="text"
                                         className="form-control ekr-employee-search-bar"
-                                        placeholder="Enter the text"
+                                        placeholder="Search"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
                                     />

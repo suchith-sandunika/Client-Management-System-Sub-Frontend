@@ -271,6 +271,9 @@
 
 @media (max-width: 768px) {
     .ekr-popup-content {
+        padding: auto;
+    }
+    .ekr-popup-content {
         width: 90%; /* Adjust popup width for mobile */
         padding: 15px; /* Reduce padding */
     }

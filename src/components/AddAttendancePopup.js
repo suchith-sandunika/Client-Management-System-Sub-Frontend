@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import {toast, ToastContainer} from 'react-toastify';
-import CloseButton from '../assets/close-button.png';
+import CloseButton from '../assets/closeButton.png';
 import '../css/AddAttendancePopup.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddAttendancePopup = ({ closePopup }) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [email, setEmail] = useState(''); 
 
+    const current_date = new Date();
+    const currentHour = current_date.getHours();
+    const currentMinute = current_date.getMinutes();
+
     useEffect(() => {
         // Get today's date in YYYY-MM-DD format
         const today = new Date().toISOString().split('T')[0];
         setDate(today); // Set the current date as default
+        console.log(current_date);
+        console.log(currentHour);
+        console.log(currentMinute);
     }, []); 
 
     const handleChange = (e) => {
@@ -25,41 +33,43 @@ const AddAttendancePopup = ({ closePopup }) => {
 
     const submitData = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
-        if(name === '' || date === '' || email === '' || !validateEmail(email)) {
-            toast.error('Please fill all necessary fields');
-            return;
-        } else {
-            console.log(name, date, email);
-            try {
-                const response =  await fetch('http://localhost:8800/api/employees/addAttendance', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ name, date, email })
-                })
-                if(!response.ok) {
-                    const errorMessage = await response.text();
-                    toast.error(`Error Occurred: ${errorMessage || 'Unknown error'}`);
-                    return;
+        console.log(name, date, email);
+        try {
+            const response =  await fetch('http://localhost:8800/api/employees/addAttendance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, date, email })
+            })
+            if(!response.ok) {
+                const errorMessage = await response.text();
+                toast.error(`Error Occurred: ${errorMessage || 'Unknown error'}`);
+                return;
+            } else {
+                const responseData = await response.json();
+                console.log(responseData);
+                if(currentHour < 8 || currentHour > 17 || currentMinute < 0 || currentHour > 60) {
+                    console.log('Time Error');
+                    toast.error('Attendance can only be added between 8:00 AM and 5:00 PM, The working hours!');
+                    closePopup();
                 } else {
-                    const responseData = await response.json();
-                    console.log(responseData);
+                    console.log('No Error');
                     toast.success('Visit Confirmation Successfull!')
                     closePopup(); // Close the popup after successful submission
                     window.location.reload();
                 }
-            } catch (error) {
-                console.log(error);
-                toast.error('A network error occurred. Please try again later.');
             }
+        } catch (error) {
+            console.log(error);
+            toast.error('A network error occurred. Please try again later.');
         }
     }
 
     return (
         <div className='text-white'>
-            <div className='close-button-container'>
-                    <img src={CloseButton} alt='Close' className='close-button' onClick={closePopup}/>
+            <div className='ekr-close-button-container'>
+                    <img src={CloseButton} alt='Close' className='ekr-close-button' onClick={closePopup}/>
             </div>
             <h5 className='text-center mb-3'>Attendance</h5>
             <form className='align-content-center'  style={{ position: 'relative' }}>
@@ -83,7 +93,7 @@ const AddAttendancePopup = ({ closePopup }) => {
                     Confirm Visit
                 </button>
             </form>
-            <ToastContainer className='mt-5'/>
+            <ToastContainer className='mt-5 ekr-custom-toast-container'/>
         </div>
     )
 }
