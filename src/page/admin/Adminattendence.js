@@ -108,7 +108,7 @@ const AdminAttendance = () => {
   };
 
   return (
-    <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+    <div className="ekr-admin-attendance-container d-flex flex-column" style={{ minHeight: '100vh' }}>
       <Navbar />
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
@@ -212,7 +212,10 @@ const AdminAttendance = () => {
             </div>
         </div> 
       </div>
-      <Footer />              
+
+      {/* Scrollable Footer */}
+      {/*  */}
+      <Footer style={{ position: 'relative', bottom: '0', width: '100%', zIndex: '10' }} />              
     </div>
   );
 };
