@@ -349,3 +349,13 @@ footer {
       padding-top: 20px; 
   }
 }
+
+/*
+.ekr-scroll-wrapper {                   /*table scrol*
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+*/
