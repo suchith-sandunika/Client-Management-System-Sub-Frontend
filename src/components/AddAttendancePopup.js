@@ -22,14 +22,22 @@ const AddAttendancePopup = ({ closePopup }) => {
         console.log(currentMinute);
     }, []); 
 
-    const handleChange = (e) => {
-        setDate(e.target.value); // Update state with selected date
+    const formatDateToDMY = (date) => {
+        // for attendance taking conditions ...
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${year}-${month}-${day}`;
     };
 
-    const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+    const handleChange = (e) => {
+        setDate(formatDateToDMY(e.target.value)); // Update state with selected date
     };
+
+    // const validateEmail = (email) => {
+    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailRegex.test(email);
+    // };
 
     const submitData = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -49,14 +57,14 @@ const AddAttendancePopup = ({ closePopup }) => {
             } else {
                 const responseData = await response.json();
                 console.log(responseData);
-                if(currentHour < 8 || currentHour > 17 || currentMinute < 0 || currentHour > 60) {
+                if(currentHour < 8 || currentHour > 17 || currentMinute > 60) {
                     console.log('Time Error');
                     toast.error('Attendance can only be added between 8:00 AM and 5:00 PM, The working hours!');
                     closePopup();
                 } else {
                     console.log('No Error');
                     toast.success('Visit Confirmation Successfull!')
-                    closePopup(); // Close the popup after successful submission
+                    closePopup(); // Close the popup after successful submission ...
                     window.location.reload();
                 }
             }

@@ -163,16 +163,11 @@ function EmployeeAttendance() {
                                         {data.length > 0 ? (
                                             data.map((element, index) => (
                                                 <tr key={element.id} className="w-100">
-                                                    <td className="text-center">{element.RowNumber}</td>
+                                                    <td className="text-center">{String(element.RowNumber).padStart(2, '0')}</td>
                                                     <td className="text-center">{element.name}</td>
                                                     <td className="text-center">{formatDateToDMY(new Date(element.date))}</td>
                                                     <td className="text-center">{element.email}</td>
-                                                    <td className="text-center text-bold">
-                                                        {element.status}
-                                                    </td>
-                                                    {/* <td className="text-center text-bold" style={{ color: element.status === "Attended" ? "green" : "red" }}>
-                                                        {element.status}
-                                                    </td> */}
+                                                    <td className="text-center text-bold">{element.status}</td>
                                                 </tr>
                                             ))
                                         ) : (
