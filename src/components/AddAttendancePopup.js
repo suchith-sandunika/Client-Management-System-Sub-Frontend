@@ -4,7 +4,7 @@ import CloseButton from '../assets/closeButton.png';
 import '../css/AddAttendancePopup.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddAttendancePopup = ({ closePopup }) => {
+const AddAttendancePopup = ({ closePopup, data }) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [email, setEmail] = useState(''); 
@@ -20,6 +20,7 @@ const AddAttendancePopup = ({ closePopup }) => {
         console.log(current_date);
         console.log(currentHour);
         console.log(currentMinute);
+        console.log(data);
     }, []); 
 
     const formatDateToDMY = (date) => {
@@ -83,7 +84,7 @@ const AddAttendancePopup = ({ closePopup }) => {
             <form className='align-content-center'  style={{ position: 'relative' }}>
                 <div className='d-flex justify-content-between align-items-start mb-3'>
                     <label htmlFor='name' className='pt-2 w-25 text-start'>User Name</label>
-                    <input type="text" placeholder='User Name' className='w-75' required onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder='User Name' value={data[0].Name} className='w-75' required onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className='d-flex justify-content-between mt-1 align-items-start mb-3'>
                     <label htmlFor='date-input' className='pt-2 w-25 text-start'>Date</label>
@@ -91,7 +92,7 @@ const AddAttendancePopup = ({ closePopup }) => {
                 </div>
                 <div className='d-flex justify-content-between mt-1 align-items-start mb-3'>
                     <label htmlFor='email' className='pt-2 w-25 text-start'>Email</label>
-                    <input type="text" placeholder='Email' className='w-75' required onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="text" placeholder='Email' className='w-75' value={data[0].Email} required onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <p className='text-center'>
                     Attendance recorded! Thank you for visiting our employees today.

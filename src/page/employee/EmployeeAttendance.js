@@ -9,13 +9,16 @@ import searchIcon from "../../assets/image.png"
 import 'react-toastify/dist/ReactToastify.css';
 import "../../css/EmployeeAttendance.css";
 
-function EmployeeAttendance() {
+function EmployeeAttendance({ userData }) {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [allAttendances, setAllAttendances] = useState([]);
     const [inputData, setInputData] = useState(null);
     const [openPopup, setOpenPopup] = useState(false);
+    const [loggedUser, setLoggeduser] = useState([]);
+
+    const user = 'esuchith@gmail.com';
 
     const formatDateToDMY = (date) => {
         const day = String(date.getDate()).padStart(2, '0');
@@ -27,6 +30,27 @@ function EmployeeAttendance() {
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
     }; 
+
+    const getLoggedUserData = async (input) => {
+        try {
+            const response = await fetch(`http://localhost:8800/api/employees/viewEmployees/${input}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type':'application/json',
+                }
+            });
+            const responseData = await response.json();
+            if(!response.ok) {
+                toast.error('Error Occured !');
+            } else {
+                console.log(responseData);
+                setLoggeduser(responseData);
+                console.log('success');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const viewAllAttendances = async () => {
         try {
@@ -100,7 +124,13 @@ function EmployeeAttendance() {
     };
 
     useEffect(() => {
-        viewAllAttendances(); // Fetch all attendances on mount
+        viewAllAttendances(); // Fetch all attendances on mount ...
+        // For testing i have added a dummy data , which stored in user variable ...
+        getLoggedUserData(user); // Fetch logged user details ...
+        // getLoggedUserData(userData);
+        // In here all things fixed, when logged user details passed through a prop, 
+        // then we can fetch user / employee data from database using that user 
+        // details which stores in userDate ...
     }, []);
 
     return (
@@ -188,7 +218,7 @@ function EmployeeAttendance() {
             {openPopup && (
                 <div className="ekr-popup-overlay">
                     <div className="ekr-popup-content" onClick={(e) => e.stopPropagation()}>
-                        <AddAttendancePopup closePopup={closePopup} />
+                        <AddAttendancePopup closePopup={closePopup} data={loggedUser} />
                     </div>
                 </div>
             )}
