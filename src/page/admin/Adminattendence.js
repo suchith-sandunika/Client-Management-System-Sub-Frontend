@@ -116,7 +116,6 @@ const AdminAttendance = () => {
       <div className={`flex-grow-1 d-flex ${sidebarVisible ? 'show-sidebar' : ''}`}>
         <Sidebar sidebarVisible={sidebarVisible} />
         <div className="main-content p-4">
-          {/* Adjusted Breadcrumb */}
           <div className="ekr-breadcrumb mb-3 mt-3">
             <h5>
               Home / <span style={{ color: '#24757E' }}>Attendance</span>
@@ -174,35 +173,37 @@ const AdminAttendance = () => {
               </div>
 
               <div className="ekr-scrollable-table">
-                <table className="ekr-attendance-table table table-bordered">
-                  <thead className="thead-light">
-                    <tr>
-                      <th>No</th>
-                      <th>Employee Name</th>
-                      <th>Date</th>
-                      <th>Email</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredData.map((entry, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{entry.name}</td>
-                        <td>{formatDate(entry.date)}</td>
-                        <td>{entry.email}</td>
-                        <td className="fw-bold">{entry.status}</td>
-                      </tr>
-                    ))}
-                    {filteredData.length === 0 && (
+                <div className="ekr-scroll-wrapper"> {/* Added scroll wrapper */}
+                  <table className="ekr-attendance-table table table-bordered">
+                    <thead className="thead-light">
                       <tr>
-                        <td colSpan="5" className="text-center fw-bold">
-                          No matching records found
-                        </td>
+                        <th>No</th>
+                        <th>Employee Name</th>
+                        <th>Date</th>
+                        <th>Email</th>
+                        <th>Status</th>
                       </tr>
-                    )}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {filteredData.map((entry, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>{entry.name}</td>
+                          <td>{formatDate(entry.date)}</td>
+                          <td>{entry.email}</td>
+                          <td className="fw-bold">{entry.status}</td>
+                        </tr>
+                      ))}
+                      {filteredData.length === 0 && (
+                        <tr>
+                          <td colSpan="5" className="text-center fw-bold">
+                            No matching records found
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
