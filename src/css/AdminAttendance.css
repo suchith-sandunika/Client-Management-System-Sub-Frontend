@@ -305,16 +305,15 @@ footer {
     border-radius: 5px; 
 }
 }
-/* Add this inside your existing media query for screens smaller than 768px */
+
 @media (max-width: 768px) {
   .ekr-button-row {
     display: flex;
-    justify-content: space-between; /* Push buttons to both ends */
-    gap: 10px; /* Add some spacing between buttons */
+    justify-content: space-between; 
+    gap: 10px; 
   }
 
   .ekr-reset-btn {
-    /* Ensure the Reset button stays on the left side */
     order: 1; 
   }
 
@@ -337,4 +336,16 @@ footer {
   font-size: 14px;
   color: #6c757d;
   margin-top: 20px; /* Add space below navbar */
+}
+
+/* Hide Page Title on Mobile View */
+@media (max-width: 768px) {
+  h4.ekr-page-title.text-center {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  body {
+      padding-top: 20px; 
+  }
 }
