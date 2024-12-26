@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import DatePicker from 'react-datepicker';
+import 'jspdf-autotable';
 import Navbar from '../../components/templetes/Navbar';
 import Footer from '../../components/PagesFooter';
 import Sidebar from '../../components/templetes/SideBar';
-import DatePicker from 'react-datepicker';
 import searchIcon from '../../assets/image.png';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/AdminAttendance.css';
-import 'jspdf-autotable';
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminAttendance = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -36,7 +37,7 @@ const AdminAttendance = () => {
 
   const fetchAttendanceData = async () => {
     try {
-      const response = await fetch('http://localhost:8800/api/admin/ViewAllAttendances');
+      const response = await fetch('http://localhost:5000/api/admin/ViewAllAttendances');
       const data = await response.json();
       setAttendanceData(data);
       setFilteredData(data);
@@ -76,7 +77,7 @@ const AdminAttendance = () => {
 
   const handleDownloadPDF = async () => {
     try {
-      const response = await fetch('http://localhost:8800/api/admin/generatePDF', { method: 'GET' });
+      const response = await fetch('http://localhost:5000/api/admin/generatePDF', { method: 'GET' });
       const blob = await response.blob();
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
@@ -91,7 +92,7 @@ const AdminAttendance = () => {
 
   const handleReset = async () => {
     try {
-      const response = await fetch('http://localhost:8800/api/admin/resetData', { method: 'GET' });
+      const response = await fetch('http://localhost:5000/api/admin/resetData', { method: 'GET' });
       const result = await response.json();
       if (response.ok) {
         setAttendanceData([]);

@@ -13,7 +13,7 @@ const Sidebar = ({ sidebarVisible }) => {
       <h2>Dashboard</h2>
       <ul>
         <li>
-          <Link to="/attendance"> {/* Use Link for navigation */}
+          <Link to="/admin-attendance"> {/* Use Link for navigation */}
             <img src={attendence} alt="Attendance" style={{ width: '20px', marginRight: '14px' }} /> 
             Attendance
           </Link>

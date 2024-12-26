@@ -8,6 +8,7 @@ import circlePlusIcon from "../../assets/plusIcon.png";
 import searchIcon from "../../assets/image.png"
 import 'react-toastify/dist/ReactToastify.css';
 import "../../css/EmployeeAttendance.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function EmployeeAttendance({ userData }) {
     const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -33,7 +34,7 @@ function EmployeeAttendance({ userData }) {
 
     const getLoggedUserData = async (input) => {
         try {
-            const response = await fetch(`http://localhost:8800/api/employees/viewEmployees/${input}`, {
+            const response = await fetch(`http://localhost:5000/api/employees/viewEmployees/${input}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type':'application/json',
@@ -54,7 +55,7 @@ function EmployeeAttendance({ userData }) {
 
     const viewAllAttendances = async () => {
         try {
-            const response = await fetch('http://localhost:8800/api/employees/ViewAllAttendances', {
+            const response = await fetch('http://localhost:5000/api/employees/ViewAllAttendances', {
                 method: 'GET',
                 headers: {
                     'Content-Type':'application/json',
@@ -78,7 +79,7 @@ function EmployeeAttendance({ userData }) {
         try {
             console.log(input);
             setInputData(input);
-            const response = await fetch(`http://localhost:8800/api/employees/attendance/${input}`, {
+            const response = await fetch(`http://localhost:5000/api/employees/attendance/${input}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type':'application/json',
