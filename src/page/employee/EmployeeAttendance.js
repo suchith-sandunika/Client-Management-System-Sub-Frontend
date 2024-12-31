@@ -136,6 +136,7 @@ function EmployeeAttendance({ userData }) {
 
     return (
         <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+            <ToastContainer position="top-right" autoClose={3000} />
             <Navbar />
             <button className="sidebar-toggle" onClick={toggleSidebar}>
                 ☰
@@ -224,7 +225,6 @@ function EmployeeAttendance({ userData }) {
                 </div>
             )}
             {/* Toast Notification */}
-            <ToastContainer />
         </div>
     );
 }

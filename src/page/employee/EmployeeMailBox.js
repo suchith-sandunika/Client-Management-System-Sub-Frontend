@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
@@ -54,19 +55,19 @@ const EmployeeMailBox = () => {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData), 
-                credentials: 'include', // Include credentials
+                credentials: 'include', // Include credentials ...
             });
     
             if (response.ok) {
-                alert('Email sent successfully!');
-                setFormData({ to: '', subject: '', message: '', attachment: null }); // Reset form
+                toast.success('Email sent successfully!');
+                setFormData({ to: '', subject: '', message: '', attachment: null }); // Reset form ...
             } else {
                 const errorData = await response.json();
-                alert(`Failed to send email: ${errorData.message}`);
+                toast.error(`Failed to send email: ${errorData.message}`);
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('Failed to send email.');
+            toast.error('Failed to send email.', error);
         }
     }; 
 
@@ -102,6 +103,7 @@ const EmployeeMailBox = () => {
 
     return (
         <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+            <ToastContainer position="top-right" autoClose={3000} />
             <Navbar />
             <button className="sidebar-toggle" onClick={toggleSidebar}>
                 ☰

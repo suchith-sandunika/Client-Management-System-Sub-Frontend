@@ -247,7 +247,21 @@ input::focus {
   margin-right: 20px;
 }
 
+/* Smaller popup styling */
+.smaller-swal-popup {
+  padding: 1.5rem; /* Reduce padding */
+  font-size: 0.9rem; /* Adjust font size */
+}
 
+/* Smaller title styling */
+.smaller-swal-title {
+  font-size: 1.2rem; /* Smaller title font size */
+}
+
+/* Smaller content styling */
+.smaller-swal-content {
+  font-size: 1rem; /* Reduce the font size of the text */
+}
 
 
 

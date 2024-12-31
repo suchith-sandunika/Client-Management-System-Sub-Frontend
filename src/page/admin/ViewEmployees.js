@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 import Navbar from '../../components/templetes/Navbar';
 import Footer from '../../components/PagesFooter';
 import Sidebar from '../../components/templetes/SideBar';
@@ -36,12 +38,32 @@ function ViewEmployees() {
   }, []);
 
   const handleDelete = async (EmployeeID) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/admin/employee/${EmployeeID}`);
-      setEmployees((prevEmployees) => prevEmployees.filter(emp => emp.EmployeeID !== EmployeeID));
-    } catch (err) {
-      console.error("Error deleting employee:", err);
-    }
+    Swal.fire({
+      title: 'Confirmation About Delete',
+      text: 'Are you sure you want to delete this Employee Details?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete',
+      customClass: {
+        popup: 'smaller-swal-popup', // Add a custom class for styling
+        title: 'smaller-swal-title',
+        content: 'smaller-swal-content',
+      },
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            // Perform the actiontry {
+            try {
+              await axios.delete(`http://localhost:5000/api/admin/employee/${EmployeeID}`);
+              setEmployees((prevEmployees) => prevEmployees.filter(emp => emp.EmployeeID !== EmployeeID));
+              toast.success("Employee deleted successfully!");
+            } catch (err) {
+              console.error("Error deleting employee:", err);
+              toast.error("Failed to delete employee!");
+            }
+        }
+    });
   };
 
   // Function to handle the change in the search input
@@ -84,6 +106,7 @@ function ViewEmployees() {
 
   return (
           <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+            <ToastContainer position="top-right" autoClose={3000} />
             <Navbar />
             <button className="sidebar-toggle" onClick={toggleSidebar}>
                 ☰

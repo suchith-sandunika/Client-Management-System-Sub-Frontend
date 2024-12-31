@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
@@ -7,18 +10,95 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UpdateEmployee = () => {
     const [sidebarVisible, setSidebarVisible] = useState(false);
-    const [passwordVisible, setPasswordVisible] = useState(false); // State for password visibility
+    const [passwordVisible, setPasswordVisible] = useState(false); // State for password visibility ...
+    const [name, setName] = useState("");
+    const [designation, setDesignation] = useState("");
+    const [workStartDate, setWorkStartDate] = useState("");
+    const [email, setEmail] = useState("");
+    const [contactNumber, setContactNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
     };
 
     const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible); // Toggle password visibility
+        setPasswordVisible(!passwordVisible); // Toggle password visibility ...
     };
+
+    const formatDateToMMDDYYYY = (date) => {
+        const mm = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed ...
+        const dd = String(date.getDate()).padStart(2, '0'); 
+        const yyyy = date.getFullYear();
+        return `${yyyy}-${mm}-${dd}`;
+    };
+
+    function handleSubmit(event) {
+        event.preventDefault(); // Always prevent default at the start ...
+
+        // Input validation
+        if (!name) {
+            toast.error("Name is required!");
+            return;
+        }
+        if (!designation) {
+            toast.error("Designation is required!");
+            return;
+        }
+        if (!workStartDate) {
+            toast.error("Work Start Date is required!");
+            return;
+        }
+        if (!email) {
+            toast.error("Email is required!");
+            return;
+        }
+        if (!contactNumber) {
+            toast.error("Contact Number is required!");
+            return;
+        }
+        if (!address) {
+            toast.error("Address is required!");
+            return;
+        }
+        if (!userName) {
+            toast.error("User Name is required!");
+            return;
+        }
+        if (!password) {
+            toast.error("Password is required!");
+            return;
+        }
+
+        // Submit the form data to the API
+        axios.post("http://localhost:5000/api/admin/register", {
+            Name: name,
+            Designation: designation,
+            WorkStartDate: workStartDate,
+            Email: email,
+            ContactNumber: contactNumber,
+            Address: address,
+            UserName: userName,
+            Password: password,
+        })
+        .then((res) => {
+            toast.success("Employee added successfully!");
+            console.log(res.data);
+            // navigate after successful submission ...
+            navigate('/view-employees');
+        })
+        .catch((err) => {
+            console.error("Error posting data:", err.response?.data || err.message);
+            toast.error(err.response?.data?.message || "Error adding employee!");
+        });
+    }
 
     return (
         <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+            <ToastContainer position="top-right" autoClose={3000} />
             <Navbar />
             <button className="sidebar-toggle" onClick={toggleSidebar}>
                 ☰
@@ -46,51 +126,51 @@ const UpdateEmployee = () => {
                             <div className="waw-form-container">
                                 <form>
                                     {/* EmployeeID Field */}
-                                    <div className="waw-form-row">
+                                    {/* <div className="waw-form-row">
                                         <label htmlFor="employeeID">EmployeeID</label>
-                                        <input type="text" id="employeeID" className="form-control" placeholder="Enter ID"/>
-                                    </div>
+                                        <input type="text" id="employeeID" className="form-control" placeholder="Enter ID" onChange={(e) => setEmployeeId(e.target.value)}/>
+                                    </div> */}
 
                                     {/* Employee Name Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="employeeName">Employee Name</label>
-                                        <input type="text" id="employeeName" className="form-control" placeholder="Enter Name"/>
+                                        <input type="text" id="employeeName" className="form-control" placeholder="Enter Name" onChange={(e) => setName(e.target.value)}/>
                                     </div>
 
                                     {/* Designation Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="designation">Designation</label>
-                                        <input type="text" id="designation" className="form-control" placeholder="Enter Designation"/>
+                                        <input type="text" id="designation" className="form-control" placeholder="Enter Designation" onChange={(e) => setDesignation(e.target.value)}/>
                                     </div>
 
                                     {/* Work Starting Date Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="workStartDate">Work Starting Date</label>
-                                        <input type="date" id="workStartDate" className="form-control" placeholder="Enter Date"/>
+                                        <input type="date" id="workStartDate" className="form-control" placeholder="Enter Date" onChange={(e) => setWorkStartDate(e.target.value)}/>
                                     </div>
 
                                     {/* Contact Number Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="contactNumber">Contact Number</label>
-                                        <input type="text" id="contactNumber" className="form-control" placeholder="Enter Contact Number"/>
+                                        <input type="text" id="contactNumber" className="form-control" placeholder="Enter Contact Number" onChange={(e) => setContactNumber(e.target.value)}/>
                                     </div>
 
                                     {/* Address Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="address">Address</label>
-                                        <input type="text" id="address" className="form-control" placeholder="Enter Address"/>
+                                        <input type="text" id="address" className="form-control" placeholder="Enter Address" onChange={(e) => setAddress(e.target.value)}/>
                                     </div>
 
                                     {/* Email Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="email">Email</label>
-                                        <input type="text" id="email" className="form-control" placeholder="Enter Email"/>
+                                        <input type="text" id="email" className="form-control" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}/>
                                     </div>
 
                                     {/* User Name Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="userName">User Name</label>
-                                        <input type="text" id="userName" className="form-control" placeholder="Enter User Name"/>
+                                        <input type="text" id="userName" className="form-control" placeholder="Enter User Name" onChange={(e) => setUserName(e.target.value)}/>
                                     </div>
 
                                     {/* Password Field */}
@@ -102,6 +182,7 @@ const UpdateEmployee = () => {
                                                 id="password"
                                                 className="form-control"
                                                 placeholder="Enter password"
+                                                onChange={(e) => setPassword(e.target.value)}
                                             />
                                             <span
                                                 className="password-toggle-btn"
@@ -114,7 +195,7 @@ const UpdateEmployee = () => {
 
                                     {/* Submit Button */}
                                     <div className="waw-form-row">
-                                        <button type="submit" className="btn">Save</button>
+                                        <button type="submit" className="btn" onClick={handleSubmit}>Save</button>
                                     </div>
                                 </form>
                             </div>

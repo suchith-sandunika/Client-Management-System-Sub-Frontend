@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 import Sidebar from "../../components/templetes/ESideBar";
 import Navbar from "../../components/templetes/Navbar";
 import Footer from "../../components/PagesFooter";
@@ -32,11 +34,23 @@ const UpdateEmployee = () => {
         setPasswordVisible(!passwordVisible); // Toggle password visibility
     }; 
 
-    const formatDateToDMY = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-        return `${month}/${day}/${year}`;
+    const formatDateToMMDDYYYY = (date) => {
+        const mm = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        const dd = String(date.getDate()).padStart(2, '0'); 
+        const yyyy = date.getFullYear();
+        return `${yyyy}-${mm}-${dd}`;
+    };
+
+    const formatToLocalISODate = (date) => {
+        if (!date) return ""; // Handle empty or invalid dates
+        const parsedDate = new Date(date); 
+        if (isNaN(parsedDate.getTime())) return ""; // Return empty string if invalid
+    
+        // Adjust to local timezone and ensure no time offset
+        const offset = parsedDate.getTimezoneOffset();
+        parsedDate.setMinutes(parsedDate.getMinutes() - offset);
+    
+        return parsedDate.toISOString().split("T")[0];
     };
 
     useEffect(() => {
@@ -48,18 +62,24 @@ const UpdateEmployee = () => {
                     setEmployeeID(response.data.EmployeeID);
                     setName(response.data.Name);
                     setDesignation(response.data.Designation);
-                    setWorkStartDate(response.data.WorkStartDate);
+                    // setWorkStartDate(response.data.WorkStartDate);
                     setContactNumber(response.data.ContactNumber);
                     setAddress(response.data.Address);
                     setEmail(response.data.Email);
                     setUsername(response.data.Name);
                     setPassword(response.data.Password);
+
+                    // Set the date format to MM/DD/YYYY format ...
+                    const formattedDate = formatDateToMMDDYYYY(new Date(response.data.WorkStartDate));
+                    setWorkStartDate(formattedDate);
                 } else {
+                    toast.error("Employee not found.");
                     setError("Employee not found.");
                 }
             } catch (err) {
                 console.error("Error fetching data:", err.message || err);
                 setError("Failed to fetch employee details.");
+                toast.error("Failed to fetch employee details.");
             } finally {
                 setLoading(false);
             }
@@ -70,20 +90,66 @@ const UpdateEmployee = () => {
         }
     }, [EmployeeID]); 
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         await axios.put(`http://localhost:8081/update/${EmployeeID}`, employee);
-    //         alert("Employee updated successfully!");
-    //         navigate('/');
-    //     } catch (err) {
-    //         console.error("Update error:", err);
-    //         alert("Error updating employee details.");
-    //     }
-    // };
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Prevent default form submission
+      
+        Swal.fire({
+          title: 'Confirmation About Update',
+          text: 'Are you sure you want to update this Employee Details?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Update',
+          customClass: {
+            popup: 'smaller-swal-popup',
+            title: 'smaller-swal-title',
+            content: 'smaller-swal-content',
+          },
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            try {
+              // Perform the API request
+              console.log(workStartDate);
+              await axios.put(`http://localhost:5000/api/admin/update/${EmployeeID}`, {
+                Name: name,
+                Designation: designation,
+                WorkStartDate: formatDateToMMDDYYYY(workStartDate),
+                ContactNumber: contactNumber,
+                Address: address,
+                Email: email,
+                // username,
+                Password: password,
+              });
+      
+              // Success message
+              Swal.fire({
+                icon: 'success',
+                title: 'Employee Updated!',
+                text: 'The employee details have been successfully updated.',
+                confirmButtonColor: '#3085d6',
+              });
+      
+              // Navigate to the desired route
+              navigate('/view-employees');
+            } catch (err) {
+              console.error("Update error:", err);
+      
+              // Error message
+              Swal.fire({
+                icon: 'error',
+                title: 'Update Failed!',
+                text: 'An error occurred while updating employee details. Please try again.',
+                confirmButtonColor: '#d33',
+              });
+            }
+          }
+        });
+    };
 
     return (
         <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
+            <ToastContainer position="top-right" autoClose={3000} />
             <Navbar />
             <button className="sidebar-toggle" onClick={toggleSidebar}>
                 ☰
@@ -113,19 +179,19 @@ const UpdateEmployee = () => {
                                     {/* EmployeeID Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="employeeID">EmployeeID</label>
-                                        <input type="text" id="employeeID" className="form-control" placeholder="Enter ID" value={employeeID}/>
+                                        <input type="text" id="employeeID" className="form-control" placeholder="Enter ID" value={employeeID} required/>
                                     </div>
 
                                     {/* Employee Name Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="employeeName">Employee Name</label>
-                                        <input type="text" id="employeeName" className="form-control" placeholder="Enter Name" value={name}/>
+                                        <input type="text" id="employeeName" className="form-control" placeholder="Enter Name" value={name} required onChange={(e) => setName(e.target.value)}/>
                                     </div>
 
                                     {/* Designation Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="designation">Designation</label>
-                                        <input type="text" id="designation" className="form-control" placeholder="Enter Designation" value={designation}/>
+                                        <input type="text" id="designation" className="form-control" placeholder="Enter Designation" value={designation} required onChange={(e) => setDesignation(e.target.value)}/>
                                     </div>
 
                                     {/* Work Starting Date Field */}
@@ -136,36 +202,38 @@ const UpdateEmployee = () => {
                                             id="workStartDate"
                                             className="form-control"
                                             placeholder="Enter Date"
-                                            value={new Date(workStartDate).toISOString().split('T')[0]} // Convert to YYYY-MM-DD
+                                            value={formatToLocalISODate(workStartDate)} // Format date to YYYY-MM-DD // Convert to YYYY-MM-DD ...
+                                            onChange={(e) => setWorkStartDate(e.target.value)}
+                                            required
                                         />
                                     </div>
 
                                     {/* Contact Number Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="contactNumber">Contact Number</label>
-                                        <input type="text" id="contactNumber" className="form-control" placeholder="Enter Contact Number" value={contactNumber}/>
+                                        <input type="text" id="contactNumber" className="form-control" placeholder="Enter Contact Number" value={contactNumber} required onChange={(e) => setContactNumber(e.target.value)}/>
                                     </div>
 
                                     {/* Address Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="address">Address</label>
-                                        <input type="text" id="address" className="form-control" placeholder="Enter Address" value={address}/>
+                                        <input type="text" id="address" className="form-control" placeholder="Enter Address" value={address} required onChange={(e) => setAddress(e.target.value)}/>
                                     </div>
 
                                     {/* Email Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="email">Email</label>
-                                        <input type="text" id="email" className="form-control" placeholder="Enter Email" value={email}/>
+                                        <input type="text" id="email" className="form-control" placeholder="Enter Email" value={email} required onChange={(e) => setEmail(e.target.value)}/>
                                     </div>
 
                                     {/* User Name Field */}
                                     <div className="waw-form-row">
                                         <label htmlFor="userName">User Name</label>
-                                        <input type="text" id="userName" className="form-control" placeholder="Enter User Name" value={username}/>
+                                        <input type="text" id="userName" className="form-control" placeholder="Enter User Name" value={username} required onChange={(e) => setUsername(e.target.value)}/>
                                     </div>
 
                                     {/* Password Field */}
-                                    <div className="waw-form-row">
+                                    {/* <div className="waw-form-row">
                                         <label htmlFor="password">Password</label>
                                         <div className="password-input-wrapper">
                                             <input
@@ -174,6 +242,8 @@ const UpdateEmployee = () => {
                                                 className="form-control"
                                                 placeholder="Enter password"
                                                 value={password}
+                                                required
+                                                onChange={(e) => setPassword(e.target.value)}
                                             />
                                             <span
                                                 className="password-toggle-btn"
@@ -182,11 +252,11 @@ const UpdateEmployee = () => {
                                                 <i className={`fa ${passwordVisible ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     {/* Submit Button */}
                                     <div className="waw-form-row">
-                                        <button type="submit" className="btn">Update</button>
+                                        <button type="submit" className="btn" onClick={handleSubmit}>Update</button>
                                     </div>
                                 </form>
                             </div>
